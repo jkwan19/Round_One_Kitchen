@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
-import NavigationBar from './NavigationBar'
-
+import NavigationBar from './NavigationBar';
+import YouTubePlayer from './YouTubePlayer';
 function App() {
 
   return (
     <div>
       <NavigationBar />
-      <div>Videos</div>
-      <div>Blog</div>
+      <YouTubePlayer />
     </div>
 
   );
