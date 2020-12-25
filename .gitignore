@@ -1,3 +1,5 @@
 #dependencies
 /node_modules
 
+#recipe info
+ingredients.json
