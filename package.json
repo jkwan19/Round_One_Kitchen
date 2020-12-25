@@ -2,7 +2,7 @@
   "name": "round-one-kitchen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.jsx",
   "babel": {
     "presets": [
       "@babel/preset-env",
@@ -43,6 +43,7 @@
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react-dom": "^17.0.1",
+    "react-youtube": "^7.13.0"
   }
 }
