@@ -1,17 +1,9 @@
 import React from 'react';
 
-
-function Recipe() {
+function Recipe(props) {
   return (
-    <div>
-      <h2>Ingredients</h2>
-      <ul>
-        <li>One</li>
-        <li>Two</li>
-        <li>Three</li>
-      </ul>
-    </div>
-
-  );
+    <li>{props.value}</li>
+  )
 }
+
 export default Recipe;
