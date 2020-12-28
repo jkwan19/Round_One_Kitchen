@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import NavigationBar from './NavigationBar';
 import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
+import ReviewButtons from './ReviewButtons'
 import data from '../ingredients.json';
 import styled from 'styled-components';
 
@@ -24,6 +25,8 @@ function App() {
       <RecipeWrapper>
         <YoutubePlayer />
         <Blog ingredients={ingredients}/>
+        <h3>Leave a review of the recipe!</h3>
+        <ReviewButtons />
       </RecipeWrapper>
     </div>
   );
