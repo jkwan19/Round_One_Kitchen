@@ -1,8 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Direction = styled.li`
+  border: 1px solid black;
+  margin: auto;
+  padding: 20px;
+`;
 
 function Directions(props) {
   return (
-    <li>{props.value}</li>
+    <Direction>{props.value}</Direction>
   )
 }
 

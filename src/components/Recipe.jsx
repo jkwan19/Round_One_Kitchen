@@ -1,8 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const RecipeItem = styled.li`
+  border: 1px solid black;
+  margin: auto;
+  padding: 20px;
+`;
 
 function Recipe(props) {
   return (
-    <li>{props.value}</li>
+    <RecipeItem>{props.value}</RecipeItem>
   )
 }
 
