@@ -1,5 +1,5 @@
 import React from 'react';
-import Recipe from './Recipe'
+import Recipe from './Recipe';
 
 function Blog(props) {
   const ingredients = props.ingredients;
@@ -21,6 +21,7 @@ function Blog(props) {
       {renderFilling}
       <h3>Dough</h3>
       {renderDough}
+      <h2>Directions</h2>
     </div>
 
   )

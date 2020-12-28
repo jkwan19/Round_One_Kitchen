@@ -5,13 +5,15 @@ function YoutubePlayer() {
   const opts = {
     height: '390',
     width: '640',
+    position: 'absolute',
+    margin: 'auto',
+    top: '50%',
+    left: '50%',
     playerVars: {
-      // https://developers.google.com/youtube/player_parameters
       autoplay: 1,
     },
   };
   const onReady = (event) => {
-    // access to player in all event handlers via event.target
     event.target.pauseVideo();
   };
   return (
