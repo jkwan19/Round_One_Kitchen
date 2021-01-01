@@ -6,11 +6,28 @@ import ReviewButtons from './ReviewButtons'
 import data from '../ingredients.json';
 import styled from 'styled-components';
 
+const RecipeTitle = styled.h1`
+  margin-top: 15%;
+  text-color: blue;
+`;
+
 const RecipeWrapper = styled.div`
   position: absolute;
   margin: auto;
   left: 33%;
-`
+  width: auto;
+`;
+
+const ReviewWrapper = styled.div`
+  display: inline-flex;
+  justify-content: space-between;
+  width: 600px;
+`;
+
+const ReviewText = styled.div`
+  text: strong;
+`;
+
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
@@ -23,10 +40,13 @@ function App() {
     <div>
       <NavigationBar />
       <RecipeWrapper>
+        <RecipeTitle>{data.name}</RecipeTitle>
         <YoutubePlayer />
         <Blog ingredients={ingredients}/>
-        <h3>Leave a review of the recipe!</h3>
-        <ReviewButtons />
+        <ReviewWrapper>
+          <ReviewText>Leave a review of the recipe!</ReviewText>
+          <ReviewButtons />
+        </ReviewWrapper>
       </RecipeWrapper>
     </div>
   );

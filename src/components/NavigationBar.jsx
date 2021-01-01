@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     marginRight: theme.spacing(2),
-    left: '20px'
+    left: '20px',
   },
   title: {
     flexGrow: 1,
@@ -68,7 +68,7 @@ function NavigationBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed">
+      <AppBar position="fixed" style={{backgroundColor: 'green'}}>
         <Toolbar>
           <IconButton
             edge="start"

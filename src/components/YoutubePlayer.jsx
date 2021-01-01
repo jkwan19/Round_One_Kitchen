@@ -1,5 +1,10 @@
 import React from 'react';
 import YouTube from 'react-youtube';
+import styled from 'styled-components';
+
+const YoutubeWrapper = styled.div`
+  margin-top: 10%;
+`;
 
 function YoutubePlayer() {
   const opts = {
@@ -7,7 +12,6 @@ function YoutubePlayer() {
     width: '640',
     position: 'absolute',
     margin: 'auto',
-    top: '50%',
     left: '50%',
     playerVars: {
       autoplay: 1,
@@ -17,7 +21,9 @@ function YoutubePlayer() {
     event.target.pauseVideo();
   };
   return (
-    <YouTube videoId="32iji_1Nduo" opts={opts} onReady={onReady} />
+    <YoutubeWrapper>
+      <YouTube videoId="32iji_1Nduo" opts={opts} onReady={onReady} />
+    </YoutubeWrapper>
   );
 }
 

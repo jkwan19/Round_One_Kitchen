@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const RecipeItem = styled.li`
-  border: 1px solid black;
+  border: 1px;
   margin: auto;
   padding: 20px;
 `;

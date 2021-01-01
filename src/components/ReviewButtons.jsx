@@ -4,25 +4,30 @@ import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 import ThumbDownIcon from '@material-ui/icons/ThumbDown';
 import IconButton from '@material-ui/core/IconButton';
 
+const ButtonWrapper = styled.div`
+  margin: auto;
+  padding: auto;
+`;
+
 function ReviewButtons() {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
 
   const handleLike = () => {
     setLikes(likes + 1);
-    alert(`Liked ${likes}`);
   }
 
   const handleDislike = () => {
     setDislikes(dislikes + 1);
-    alert(`Disliked ${dislikes}`);
   }
 
   return (
-    <div>
+    <ButtonWrapper>
+      {likes}
       <ThumbUpIcon onClick={handleLike}></ThumbUpIcon>
+      {dislikes}
       <ThumbDownIcon onClick={handleDislike}></ThumbDownIcon>
-    </div>
+    </ButtonWrapper>
   )
 }
 
