@@ -7,6 +7,7 @@ import IconButton from '@material-ui/core/IconButton';
 const ButtonWrapper = styled.div`
   margin: auto;
   padding: auto;
+  float: right;
 `;
 
 function ReviewButtons(props) {

@@ -23,7 +23,7 @@ module.exports = {
   ],
   rules: {
     'no-tabs': 0,
-    camelcase: 'off',
+    'camelcase': 'off',
     'max-len': 'off',
   },
 };

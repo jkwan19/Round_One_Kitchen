@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import NavigationBar from './NavigationBar';
 import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
@@ -6,10 +7,9 @@ import ReviewButtons from './ReviewButtons';
 import ShareButtons from './ShareButtons';
 import HoverRating from './HoverRating';
 import data from '../ingredients.json';
-import styled from 'styled-components';
 
 const TitleWrapper = styled.div`
-  width: auto;
+  width: 600px;
   display: inline-block;
 `;
 
@@ -18,6 +18,10 @@ const RecipeTitle = styled.h1`
   text-color: blue;
 `;
 
+const RatingWrapper = styled.div`
+  width: 67%;
+  display: inline-block;
+`;
 const RecipeWrapper = styled.div`
   position: absolute;
   margin: auto;
@@ -38,7 +42,6 @@ const ReviewText = styled.div`
   float: left;
 `;
 
-
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -46,15 +49,15 @@ function App() {
 
   useEffect(() => {
     setIngredients(data);
-  }, [data])
+  }, [data]);
 
   const handleLike = () => {
     setLikes(likes + 1);
-  }
+  };
 
   const handleDislike = () => {
     setDislikes(dislikes + 1);
-  }
+  };
 
   return (
     <div>
@@ -62,15 +65,18 @@ function App() {
       <RecipeWrapper>
         <TitleWrapper>
           <RecipeTitle>{data.name}</RecipeTitle>
-          Reviews: {likes + dislikes}
-          <HoverRating />
-          <ShareButtons/>
+          <RatingWrapper>
+            Reviews:
+            {likes + dislikes}
+            <HoverRating />
+          </RatingWrapper>
+          <ShareButtons />
         </TitleWrapper>
         <YoutubePlayer />
-        <Blog ingredients={ingredients}/>
+        <Blog ingredients={ingredients} />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
-          <ReviewButtons handleLike={handleLike} handleDislike={handleDislike}/>
+          <ReviewButtons handleLike={handleLike} handleDislike={handleDislike} />
         </ReviewWrapper>
       </RecipeWrapper>
     </div>

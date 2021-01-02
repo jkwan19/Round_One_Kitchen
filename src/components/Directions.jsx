@@ -10,7 +10,7 @@ const Direction = styled.li`
 function Directions(props) {
   return (
     <Direction>{props.value}</Direction>
-  )
+  );
 }
 
 export default Directions;

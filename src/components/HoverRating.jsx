@@ -21,6 +21,7 @@ const useStyles = makeStyles({
     width: 200,
     display: 'flex',
     alignItems: 'center',
+    float: 'right',
   },
 });
 
