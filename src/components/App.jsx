@@ -4,8 +4,14 @@ import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
 import ReviewButtons from './ReviewButtons';
 import ShareButtons from './ShareButtons';
+import HoverRating from './HoverRating';
 import data from '../ingredients.json';
 import styled from 'styled-components';
+
+const TitleWrapper = styled.div`
+  width: auto;
+  display: inline-block;
+`;
 
 const RecipeTitle = styled.h1`
   margin-top: 15%;
@@ -22,13 +28,14 @@ const RecipeWrapper = styled.div`
 `;
 
 const ReviewWrapper = styled.div`
-  display: inline-flex;
+  display: inline-block;
   justify-content: space-between;
   width: 600px;
 `;
 
 const ReviewText = styled.div`
   text: strong;
+  float: left;
 `;
 
 
@@ -53,11 +60,12 @@ function App() {
     <div>
       <NavigationBar />
       <RecipeWrapper>
-        <RecipeTitle>{data.name}</RecipeTitle>
-        Likes:{likes}
-        Dislikes:{dislikes}
-        Reviews: {likes + dislikes}
-        <ShareButtons/>
+        <TitleWrapper>
+          <RecipeTitle>{data.name}</RecipeTitle>
+          Reviews: {likes + dislikes}
+          <HoverRating />
+          <ShareButtons/>
+        </TitleWrapper>
         <YoutubePlayer />
         <Blog ingredients={ingredients}/>
         <ReviewWrapper>

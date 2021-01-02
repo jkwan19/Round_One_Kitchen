@@ -16,6 +16,9 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
     left: '20px',
   },
+  header: {
+    backgroundColor: 'green',
+  },
   title: {
     flexGrow: 1,
     display: 'none',
@@ -68,7 +71,7 @@ function NavigationBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="fixed" style={{backgroundColor: 'green'}}>
+      <AppBar position="fixed" className={classes.header}>
         <Toolbar>
           <IconButton
             edge="start"

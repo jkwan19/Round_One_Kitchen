@@ -9,7 +9,7 @@ const YoutubeWrapper = styled.div`
 function YoutubePlayer() {
   const opts = {
     height: '390',
-    width: '640',
+    width: '600',
     position: 'absolute',
     margin: 'auto',
     left: '50%',

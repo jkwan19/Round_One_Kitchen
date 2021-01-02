@@ -9,24 +9,12 @@ const ButtonWrapper = styled.div`
   padding: auto;
 `;
 
-function ReviewButtons() {
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
-
-  const handleLike = () => {
-    setLikes(likes + 1);
-  }
-
-  const handleDislike = () => {
-    setDislikes(dislikes + 1);
-  }
+function ReviewButtons(props) {
 
   return (
     <ButtonWrapper>
-      {likes}
-      <ThumbUpIcon onClick={handleLike}></ThumbUpIcon>
-      {dislikes}
-      <ThumbDownIcon onClick={handleDislike}></ThumbDownIcon>
+      <ThumbUpIcon onClick={props.handleLike}></ThumbUpIcon>
+      <ThumbDownIcon onClick={props.handleDislike}></ThumbDownIcon>
     </ButtonWrapper>
   )
 }
