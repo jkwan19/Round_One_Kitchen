@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import FacebookIcon from '@material-ui/icons/Facebook';
-import TwitterIcon from '@material-ui/icons/Twitter';
+import {
+  FacebookShareButton,
+  FacebookShareCount,
+  FacebookIcon,
+  TwitterShareButton,
+  TwitterShareCount,
+  TwitterIcon
+} from 'react-share';
 
 const ShareWrapper = styled.div`
   float: right;
 `;
 
 function ShareButtons() {
-
+  const [shareUrl, setShareUrl] = useState('https://github.com/jkwan19')
   const handleFacebook = () => {
     alert('facebook');
   }
@@ -19,8 +25,23 @@ function ShareButtons() {
 
   return (
     <ShareWrapper>
-      <FacebookIcon color="primary" onClick={handleFacebook}/>
-      <TwitterIcon color="primary" onClick={handleTwitter}/>
+      <FacebookShareButton
+        url={shareUrl}
+        quote={'Har Gow Recipe by Round One Kitchen'}
+        className={'facebookButton'}>
+        <FacebookIcon
+          size={30}
+          round={true}/>
+        <FacebookShareCount />
+      </FacebookShareButton>
+      <TwitterShareButton
+        url={shareUrl}
+        quote={'Har Gow Recipe by Round One Kitchen'}
+        className={'twitterButton'}>
+        <TwitterIcon
+          size={30}
+          round={true}/>
+      </TwitterShareButton>
     </ShareWrapper>
   );
 }
