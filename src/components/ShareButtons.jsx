@@ -6,7 +6,10 @@ import {
   FacebookIcon,
   TwitterShareButton,
   TwitterShareCount,
-  TwitterIcon
+  TwitterIcon,
+  RedditShareButton,
+  RedditShareCount,
+  RedditIcon
 } from 'react-share';
 
 const ShareWrapper = styled.div`
@@ -35,6 +38,16 @@ function ShareButtons() {
           size={30}
           round={true}/>
       </TwitterShareButton>
+      <RedditShareButton
+        url={shareUrl}
+        quote={'Har Gow Recipe by Round One Kitchen'}
+        className={'redditButton'}>
+        <RedditIcon
+          size={30}
+          round={true}
+          bgStyle={{fill: '#FF5700'}}
+        />
+      </RedditShareButton>
     </ShareWrapper>
   );
 }

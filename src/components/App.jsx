@@ -73,6 +73,11 @@ function App() {
           <ReviewText>Leave a review of the recipe!</ReviewText>
           <ReviewInput addReviews={addReviews} />
         </ReviewWrapper>
+        <ul>
+          {reviewBoard.map((review) => {
+            <li>{review}</li>
+          })}
+        </ul>
       </RecipeWrapper>
     </div>
   );

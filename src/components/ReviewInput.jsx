@@ -9,7 +9,8 @@ function ReviewInput(props) {
     setReview(e.target.value);
   }
 
-  const handleReviewSubmit = () => {
+  const handleReviewSubmit = (e) => {
+    e.preventDefault();
     props.addReviews(review);
     setReview('');
   }
