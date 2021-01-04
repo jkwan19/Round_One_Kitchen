@@ -15,13 +15,6 @@ const ShareWrapper = styled.div`
 
 function ShareButtons() {
   const [shareUrl, setShareUrl] = useState('https://github.com/jkwan19')
-  const handleFacebook = () => {
-    alert('facebook');
-  }
-
-  const handleTwitter = () => {
-    alert('twitter');
-  }
 
   return (
     <ShareWrapper>

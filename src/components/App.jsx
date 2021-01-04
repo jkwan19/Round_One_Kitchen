@@ -44,20 +44,10 @@ const ReviewText = styled.div`
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
-  const [likes, setLikes] = useState(0);
-  const [dislikes, setDislikes] = useState(0);
 
   useEffect(() => {
     setIngredients(data);
   }, [data]);
-
-  const handleLike = () => {
-    setLikes(likes + 1);
-  };
-
-  const handleDislike = () => {
-    setDislikes(dislikes + 1);
-  };
 
   return (
     <div>
@@ -66,8 +56,7 @@ function App() {
         <TitleWrapper>
           <RecipeTitle>{data.name}</RecipeTitle>
           <RatingWrapper>
-            Reviews:
-            {likes + dislikes}
+            Reviews: 0
             <HoverRating />
           </RatingWrapper>
           <ShareButtons />
@@ -76,7 +65,6 @@ function App() {
         <Blog ingredients={ingredients} />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
-          <ReviewButtons handleLike={handleLike} handleDislike={handleDislike} />
         </ReviewWrapper>
       </RecipeWrapper>
     </div>
