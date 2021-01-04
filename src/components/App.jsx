@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import NavigationBar from './NavigationBar';
 import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
-import ReviewButtons from './ReviewButtons';
+import ReviewInput from './ReviewInput';
 import ShareButtons from './ShareButtons';
 import HoverRating from './HoverRating';
 import data from '../ingredients.json';
@@ -44,10 +44,16 @@ const ReviewText = styled.div`
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
+  const [reviewBoard, setReviewBoard] = useState([]);
 
   useEffect(() => {
     setIngredients(data);
   }, [data]);
+
+  const addReviews = (review) => {
+    const reviews = [...reviewBoard, review];
+    setReviewBoard(reviews);
+  }
 
   return (
     <div>
@@ -65,6 +71,7 @@ function App() {
         <Blog ingredients={ingredients} />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
+          <ReviewInput addReviews={addReviews} />
         </ReviewWrapper>
       </RecipeWrapper>
     </div>
