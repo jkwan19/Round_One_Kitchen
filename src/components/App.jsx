@@ -4,6 +4,7 @@ import NavigationBar from './NavigationBar';
 import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
 import ReviewInput from './ReviewInput';
+import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import HoverRating from './HoverRating';
 import data from '../ingredients.json';
@@ -72,12 +73,8 @@ function App() {
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
           <ReviewInput addReviews={addReviews} />
+          <ReviewsList reviewBoard={reviewBoard}/>
         </ReviewWrapper>
-        <ul>
-          {reviewBoard.map((review) => {
-            <li>{review}</li>
-          })}
-        </ul>
       </RecipeWrapper>
     </div>
   );
