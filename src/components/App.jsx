@@ -45,16 +45,22 @@ const ReviewText = styled.div`
 
 function App() {
   const [ingredients, setIngredients] = useState([]);
+  const [name, setName] = useState('');
   const [reviewBoard, setReviewBoard] = useState([]);
 
   useEffect(() => {
     setIngredients(data);
   }, [data]);
 
-  const addReviews = (review) => {
+  const addName = (name) => {
+    setName(name);
+  }
+
+  const addReview = (review) => {
     const reviews = [...reviewBoard, review];
     setReviewBoard(reviews);
-  }
+  };
+
 
   return (
     <div>
@@ -72,8 +78,8 @@ function App() {
         <Blog ingredients={ingredients} />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
-          <ReviewInput addReviews={addReviews} />
-          <ReviewsList reviewBoard={reviewBoard}/>
+          <ReviewInput addReview={addReview} addName={addName} />
+          <ReviewsList reviewBoard={reviewBoard} name={name}/>
         </ReviewWrapper>
       </RecipeWrapper>
     </div>
