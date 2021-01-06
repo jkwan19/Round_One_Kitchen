@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 
+const InputWrapper = styled.div`
+  display: flex;
+`;
 
 function ReviewInput(props) {
   const [review, setReview] = useState('');
@@ -24,13 +27,23 @@ function ReviewInput(props) {
   };
 
   return (
-    <div>
+    <InputWrapper>
       <form onSubmit={handleReviewSubmit}>
-        <input type="text" placeholder="Name" value={name} onChange={handleName} />
-        <input type="text" placeholder="Review" value={review} onChange={handleReviewText}/>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={handleName} />
+        <textarea
+          type="text"
+          placeholder="Review"
+          cols={10}
+          rows={10}
+          value={review}
+          onChange={handleReviewText}/>
         <button>Add Review</button>
       </form>
-    </div>
+    </InputWrapper>
   )
 }
 

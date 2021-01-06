@@ -33,7 +33,7 @@ const RecipeWrapper = styled.div`
 `;
 
 const ReviewWrapper = styled.div`
-  display: inline-block;
+  display: flex;
   justify-content: space-between;
   width: 600px;
 `;
