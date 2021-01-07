@@ -12,10 +12,12 @@ const UserNameText = styled.h4`
 function Review(props) {
   const review = props.review;
   const name = props.name;
+  const date =
   return (
     <ReviewBox>
       <UserNameText>{name}</UserNameText>
       <span>{review}</span>
+      <div></div>
     </ReviewBox>
   )
 }
