@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import moment from 'moment';
 
 const ReviewBox = styled.div`
   border: 1px solid;
@@ -12,12 +13,12 @@ const UserNameText = styled.h4`
 function Review(props) {
   const review = props.review;
   const name = props.name;
-  const date =
+  const date = moment(props.date).format('MMMM Do YYYY, h:mm:ss a')
   return (
     <ReviewBox>
       <UserNameText>{name}</UserNameText>
       <span>{review}</span>
-      <div></div>
+      <div>{date}</div>
     </ReviewBox>
   )
 }
