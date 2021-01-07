@@ -34,7 +34,7 @@ function ReviewInput(props) {
           placeholder="Name"
           value={name}
           onChange={handleName} />
-        <input
+        <textarea
           type="text"
           placeholder="Review"
           value={review}

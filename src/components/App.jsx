@@ -35,7 +35,7 @@ const RecipeWrapper = styled.div`
 
 const ReviewWrapper = styled.div`
   background-color: #B7B7B7;
-  display: inline-block;
+  display: block;
   justify-content: space-between;
   width: 600px;
 `;
@@ -43,6 +43,10 @@ const ReviewWrapper = styled.div`
 const ReviewText = styled.div`
   text: strong;
   float: left;
+`;
+
+const FormWrapper = styled.div`
+  display: inline-block;
 `;
 
 function App() {
@@ -85,7 +89,9 @@ function App() {
         <Blog ingredients={ingredients} />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
-          <ReviewInput addReview={addReview} addName={addName} />
+          <FormWrapper>
+            <ReviewInput addReview={addReview} addName={addName} />
+          </FormWrapper>
           <ReviewsList reviewBoard={reviewBoard}/>
         </ReviewWrapper>
       </RecipeWrapper>
