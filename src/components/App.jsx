@@ -53,6 +53,7 @@ function App() {
   const [ingredients, setIngredients] = useState([]);
   const [name, setName] = useState('');
   const [reviewBoard, setReviewBoard] = useState([]);
+  const [ratingTotal, setRatingTotal] = useState(0);
 
   useEffect(() => {
     setIngredients(recipes);
@@ -72,6 +73,10 @@ function App() {
     setReviewBoard(reviews);
   };
 
+  const addRating = (rating) => {
+    setRatingTotal(ratingTotal + 1);
+  }
+
 
   return (
     <div>
@@ -80,8 +85,8 @@ function App() {
         <TitleWrapper>
           <RecipeTitle>{recipes.name}</RecipeTitle>
           <RatingWrapper>
-            Reviews: 0
-            <HoverRating />
+            Ratings: {ratingTotal}
+            <HoverRating addRating={addRating}/>
           </RatingWrapper>
           <ShareButtons />
         </TitleWrapper>

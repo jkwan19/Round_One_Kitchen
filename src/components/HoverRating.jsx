@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-function HoverRating() {
+function HoverRating(props) {
   const [value, setValue] = useState(2);
   const [hover, setHover] = useState(-1);
   const classes = useStyles();
@@ -38,6 +38,7 @@ function HoverRating() {
         precision={0.5}
         onChange={(event, newValue) => {
           setValue(newValue);
+          props.addRating();
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
