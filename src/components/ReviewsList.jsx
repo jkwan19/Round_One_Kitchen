@@ -4,11 +4,10 @@ import styled from 'styled-components';
 
 function ReviewsList(props) {
   const reviewBoard = props.reviewBoard;
-  const name = props.name;
-  const listReviews = reviewBoard.map((review, index) =>
+  const listReviews = reviewBoard.map((data, index) =>
     <Review key={index}
-            name={name}
-            review={review} />
+            name={data.name}
+            review={data.review} />
   )
   return (
     <ul>

@@ -34,11 +34,9 @@ function ReviewInput(props) {
           placeholder="Name"
           value={name}
           onChange={handleName} />
-        <textarea
+        <input
           type="text"
           placeholder="Review"
-          cols={10}
-          rows={10}
           value={review}
           onChange={handleReviewText}/>
         <button>Add Review</button>

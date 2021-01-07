@@ -7,7 +7,8 @@ import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import HoverRating from './HoverRating';
-import data from '../ingredients.json';
+import recipes from '../../public/data/ingredients.json';
+import reviewData from '../../public/data/reviews.json';
 
 const TitleWrapper = styled.div`
   width: 600px;
@@ -33,7 +34,7 @@ const RecipeWrapper = styled.div`
 `;
 
 const ReviewWrapper = styled.div`
-  display: flex;
+  display: inline-block;
   justify-content: space-between;
   width: 600px;
 `;
@@ -49,15 +50,20 @@ function App() {
   const [reviewBoard, setReviewBoard] = useState([]);
 
   useEffect(() => {
-    setIngredients(data);
-  }, [data]);
+    setIngredients(recipes);
+    setReviewBoard(reviewData);
+  }, [recipes, reviewBoard]);
 
   const addName = (name) => {
     setName(name);
   }
 
   const addReview = (review) => {
-    const reviews = [...reviewBoard, review];
+    const newReview = {
+      name,
+      review
+    }
+    const reviews = [...reviewBoard, newReview];
     setReviewBoard(reviews);
   };
 
@@ -67,7 +73,7 @@ function App() {
       <NavigationBar />
       <RecipeWrapper>
         <TitleWrapper>
-          <RecipeTitle>{data.name}</RecipeTitle>
+          <RecipeTitle>{recipes.name}</RecipeTitle>
           <RatingWrapper>
             Reviews: 0
             <HoverRating />
@@ -79,7 +85,7 @@ function App() {
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
           <ReviewInput addReview={addReview} addName={addName} />
-          <ReviewsList reviewBoard={reviewBoard} name={name}/>
+          <ReviewsList reviewBoard={reviewBoard}/>
         </ReviewWrapper>
       </RecipeWrapper>
     </div>
