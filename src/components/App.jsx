@@ -34,6 +34,7 @@ const RecipeWrapper = styled.div`
 `;
 
 const ReviewWrapper = styled.div`
+  background-color: #B7B7B7;
   display: inline-block;
   justify-content: space-between;
   width: 600px;

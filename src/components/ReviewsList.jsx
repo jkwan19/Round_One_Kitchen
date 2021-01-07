@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import Review from './Review';
 import styled from 'styled-components';
 
+const ReviewList = styled.ul`
+  padding: 0;
+`;
+
 function ReviewsList(props) {
   const reviewBoard = props.reviewBoard;
   const listReviews = reviewBoard.map((data, index) =>
@@ -10,9 +14,9 @@ function ReviewsList(props) {
             review={data.review} />
   )
   return (
-    <ul>
+    <ReviewList>
       {listReviews}
-    </ul>
+    </ReviewList>
   )
 }
 
