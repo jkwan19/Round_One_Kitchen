@@ -1,15 +1,21 @@
-const express = require('express');
+
+const express = require('express')
 const bodyParser = require('body-parser')
-const path = require('path');
-const app = express();
-app.use(express.static(path.join(__dirname, '../dist/bundle.js')));
+const cors = require('cors')
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+const db = require('../database')
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+const app = express()
+const apiPort = 8080
 
-app.listen(process.env.PORT || 8080);
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
+app.use(bodyParser.json())
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'))
+
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
+
+app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
