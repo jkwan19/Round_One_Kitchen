@@ -1,8 +1,8 @@
-const Recipes = require('../model/recipes-model.js')
+const Recipe = require('../model/recipes-model.js')
 
-createRecipes = (req, res) => {
+const createRecipes = (req, res) => {
     const body = req.body
-
+    console.log(body, 'creating')
     if (!body) {
         return res.status(400).json({
             success: false,
@@ -10,18 +10,18 @@ createRecipes = (req, res) => {
         })
     }
 
-    const Recipes = new Recipes(body)
+    const recipe = new Recipe(body)
 
-    if (!Recipes) {
+    if (!recipe) {
         return res.status(400).json({ success: false, error: err })
     }
 
-    Recipes
+    recipe
         .save()
         .then(() => {
             return res.status(201).json({
                 success: true,
-                id: Recipes._id,
+                id: recipe._id,
                 message: 'recipe created!',
             })
         })
@@ -33,7 +33,7 @@ createRecipes = (req, res) => {
         })
 }
 
-updateRecipes = async (req, res) => {
+const updateRecipes = async (req, res) => {
     const body = req.body
 
     if (!body) {
@@ -43,77 +43,77 @@ updateRecipes = async (req, res) => {
         })
     }
 
-    Recipes.findOne({ _id: req.params.id }, (err, Recipes) => {
+    Recipe.findOne({ _id: req.params.id }, (err, recipe) => {
         if (err) {
             return res.status(404).json({
                 err,
-                message: 'Recipes not found!',
+                message: 'Recipe not found!',
             })
         }
-        Recipes.name = body.name
-        Recipes.filling = body.filling
-        Recipes.dough = body.dough
-        Recipes.directions = body.directions
-        Recipes
+        recipe.name = body.name
+        recipe.filling = body.filling
+        recipe.dough = body.dough
+        recipe.directions = body.directions
+        recipe
             .save()
             .then(() => {
                 return res.status(200).json({
                     success: true,
-                    id: Recipes._id,
-                    message: 'Recipes updated!',
+                    id: recipe._id,
+                    message: 'Recipe updated!',
                 })
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
-                    message: 'Recipes not updated!',
+                    message: 'Recipe not updated!',
                 })
             })
     })
 }
 
-deleteRecipes = async (req, res) => {
-    await Recipes.findOneAndDelete({ _id: req.params.id }, (err, Recipes) => {
+const deleteRecipes = async (req, res) => {
+    await Recipe.findOneAndDelete({ _id: req.params.id }, (err, recipe) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!Recipes) {
+        if (!Recipe) {
             return res
                 .status(404)
-                .json({ success: false, error: `Recipes not found` })
+                .json({ success: false, error: `Recipe not found` })
         }
 
-        return res.status(200).json({ success: true, data: Recipes })
+        return res.status(200).json({ success: true, data: recipe })
     }).catch(err => console.log(err))
 }
 
-getRecipesById = async (req, res) => {
-    await Recipes.findOne({ _id: req.params.id }, (err, Recipes) => {
+const getRecipesById = async (req, res) => {
+    await Recipe.findOne({ _id: req.params.id }, (err, recipe) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
 
-        if (!Recipes) {
+        if (!recipe) {
             return res
                 .status(404)
-                .json({ success: false, error: `Recipes not found` })
+                .json({ success: false, error: `Recipe not found` })
         }
-        return res.status(200).json({ success: true, data: Recipes })
+        return res.status(200).json({ success: true, data: recipe })
     }).catch(err => console.log(err))
 }
 
-getRecipes = async (req, res) => {
-    await Recipes.find({}, (err, Recipess) => {
+const getRecipes = async (req, res) => {
+    await Recipe.find({}, (err, recipes) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
-        if (!Recipess.length) {
+        if (!recipes.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Recipes not found` })
+                .json({ success: false, error: `Recipe not found` })
         }
-        return res.status(200).json({ success: true, data: Recipes })
+        return res.status(200).json({ success: true, data: recipes })
     }).catch(err => console.log(err))
 }
 

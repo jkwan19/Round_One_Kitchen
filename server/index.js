@@ -1,9 +1,9 @@
-
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const db = require('../database')
+const recipeRouter = require('./recipes-router.js')
 
 const app = express()
 const apiPort = 8080
@@ -17,5 +17,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+app.use('/api', recipeRouter);
 
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
