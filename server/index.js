@@ -1,15 +1,16 @@
 const express = require('express');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path');
 const app = express();
-app.use(express.static(path.join(__dirname, '../dist/bundle.js')));
+const apiPort = 8080;
 
-app.get('/ping', function (req, res) {
- return res.send('pong');
-});
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
+app.use(bodyParser.json())
 
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
-});
+app.get('/', (req, res) => {
+    res.send('Hello World!')
+})
 
-app.listen(process.env.PORT || 8080);
+app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))
