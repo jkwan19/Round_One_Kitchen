@@ -2,14 +2,13 @@ const Review = require('../models/reviews-model')
 
 const createReview = (req, res) => {
     const body = req.body
-
     if (!body) {
         return res.status(400).json({
             success: false,
             error: 'You must provide a review',
         })
     }
-
+    console.log(body, 'creating review')
     const review = new Review(body)
 
     if (!review) {

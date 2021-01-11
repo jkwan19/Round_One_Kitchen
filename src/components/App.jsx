@@ -87,19 +87,11 @@ const FormWrapper = styled.div`
 
 function App() {
   const [ingredients, setIngredients] = useState(recipes);
-  const [name, setName] = useState('');
-  const [rating, setRating] = useState(-1);
   const [reviewBoard, setReviewBoard] = useState([]);
   const [ratingTotal, setRatingTotal] = useState(0);
 
   useEffect(() => {
-    axios.get('/api/reviews')
-      .then(response => {
-        setReviewBoard(response.data.data);
-      })
-      .catch(function (error){
-          console.log(error);
-      })
+    getReviews();
     // setIngredients(recipes);
   }, [reviewBoard]);
 
@@ -111,16 +103,21 @@ function App() {
     setRating(value);
   }
 
-  const addReview = (comment) => {
-    const newReview = {
-      name,
-      comment,
-      rating
-    }
-    const reviews = [...reviewBoard, newReview];
-    setReviewBoard(reviews);
-    axios.post('api/reviews', reviewBoard)
-      .then(res => console.log('Posted: ', res.data));
+  const getReviews = () => {
+    axios.get('/api/reviews')
+      .then(response => {
+        setReviewBoard(response.data.data);
+      })
+      .catch(function (error){
+          console.log(error);
+      })
+  }
+  const addReview = (review) => {
+    axios.post('/api/reviews', review)
+      .then(res => {
+        console.log('Posted: ', res.data)
+        getReviews();
+      });
   };
 
   return (
@@ -135,17 +132,19 @@ function App() {
           <ShareButtons />
         </TitleWrapper>
         <YoutubePlayer />
-        <Blog ingredients={ingredients} />
+        <Blog
+          ingredients={ingredients}
+          />
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
           <FormWrapper>
             <ReviewInput
               addReview={addReview}
-              addName={addName}
-              addRating={addRating}
               />
           </FormWrapper>
-          <ReviewsList reviewBoard={reviewBoard}/>
+          <ReviewsList
+            reviewBoard={reviewBoard}
+            />
         </ReviewWrapper>
       </RecipeWrapper>
     </div>

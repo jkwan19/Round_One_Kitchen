@@ -7,16 +7,16 @@ const InputWrapper = styled.div`
 `;
 
 function ReviewInput(props) {
-  const [review, setReview] = useState('');
+  const [comment, setComment] = useState('');
   const [name, setName] = useState('');
-  const [rating, setRating] = useState(-1);
+  const [rating, setRating] = useState(2);
 
   const handleName = (e) => {
     setName(e.target.value);
   };
 
   const handleReviewText = (e) => {
-    setReview(e.target.value);
+    setComment(e.target.value);
   };
 
   const addRating = (value) => {
@@ -25,12 +25,16 @@ function ReviewInput(props) {
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
-    props.addName(name);
-    props.addRating(rating);
+    const review = {
+      name,
+      comment,
+      rating
+    }
+    console.log(review);
     props.addReview(review);
-    setRatingTotal(ratingTotal + 1);
+    setComment('');
     setName('');
-    setReview('');
+    setRating(-1);
   };
 
   return (
@@ -44,7 +48,7 @@ function ReviewInput(props) {
         <textarea
           type="text"
           placeholder="Review"
-          value={review}
+          value={comment}
           onChange={handleReviewText}/>
         <HoverRating addRating={addRating}/>
         <button>Add Review</button>
