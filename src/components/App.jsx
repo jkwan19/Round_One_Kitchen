@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import {
+  BrowserRouter as
+  Router,
+  Route,
+  Link
+} from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -9,7 +14,6 @@ import Blog from './Blog';
 import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
-import HoverRating from './HoverRating';
 
 import reviewData from '../../public/data/reviews.json';
 
@@ -84,6 +88,7 @@ const FormWrapper = styled.div`
 function App() {
   const [ingredients, setIngredients] = useState([]);
   const [name, setName] = useState('');
+  const [rating, setRating] = useState(-1);
   const [reviewBoard, setReviewBoard] = useState([]);
   const [ratingTotal, setRatingTotal] = useState(0);
 
@@ -104,19 +109,21 @@ function App() {
     setName(name);
   }
 
-  const addReview = (review) => {
+  const addRating = (value) => {
+    setRating(value);
+  }
+
+  const addReview = (comment) => {
     const newReview = {
       name,
-      review
+      comment,
+      rating
     }
     const reviews = [...reviewBoard, newReview];
     setReviewBoard(reviews);
+    axios.post('api/reviews', reviewBoard)
+      .then(res => console.log('Posted: ', res.data));
   };
-
-  const addRating = (rating) => {
-    setRatingTotal(ratingTotal + 1);
-  }
-
 
   return (
     <div>
@@ -126,7 +133,6 @@ function App() {
           <RecipeTitle>{recipes.name}</RecipeTitle>
           <RatingWrapper>
             Ratings: {ratingTotal}
-            <HoverRating addRating={addRating}/>
           </RatingWrapper>
           <ShareButtons />
         </TitleWrapper>
@@ -135,7 +141,11 @@ function App() {
         <ReviewWrapper>
           <ReviewText>Leave a review of the recipe!</ReviewText>
           <FormWrapper>
-            <ReviewInput addReview={addReview} addName={addName} />
+            <ReviewInput
+              addReview={addReview}
+              addName={addName}
+              addRating={addRating}
+              />
           </FormWrapper>
           <ReviewsList reviewBoard={reviewBoard}/>
         </ReviewWrapper>

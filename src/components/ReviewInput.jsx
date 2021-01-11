@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import HoverRating from './HoverRating';
 
 const InputWrapper = styled.div`
   display: flex;
@@ -8,6 +9,7 @@ const InputWrapper = styled.div`
 function ReviewInput(props) {
   const [review, setReview] = useState('');
   const [name, setName] = useState('');
+  const [rating, setRating] = useState(-1);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -17,11 +19,16 @@ function ReviewInput(props) {
     setReview(e.target.value);
   };
 
+  const addRating = (value) => {
+    setRating(value);
+  }
 
   const handleReviewSubmit = (e) => {
     e.preventDefault();
     props.addName(name);
+    props.addRating(rating);
     props.addReview(review);
+    setRatingTotal(ratingTotal + 1);
     setName('');
     setReview('');
   };
@@ -39,6 +46,7 @@ function ReviewInput(props) {
           placeholder="Review"
           value={review}
           onChange={handleReviewText}/>
+        <HoverRating addRating={addRating}/>
         <button>Add Review</button>
       </form>
     </InputWrapper>

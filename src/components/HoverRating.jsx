@@ -38,7 +38,7 @@ function HoverRating(props) {
         precision={0.5}
         onChange={(event, newValue) => {
           setValue(newValue);
-          props.addRating();
+          props.addRating(newValue);
         }}
         onChangeActive={(event, newHover) => {
           setHover(newHover);
