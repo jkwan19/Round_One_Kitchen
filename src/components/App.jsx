@@ -86,24 +86,22 @@ const FormWrapper = styled.div`
 `;
 
 function App() {
-  const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState(recipes);
   const [name, setName] = useState('');
   const [rating, setRating] = useState(-1);
   const [reviewBoard, setReviewBoard] = useState([]);
   const [ratingTotal, setRatingTotal] = useState(0);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/reviews/')
+    axios.get('/api/reviews')
       .then(response => {
-        console.log(response.data, 'reviews received')
-        setReviewBoard(response.data);
+        setReviewBoard(response.data.data);
       })
       .catch(function (error){
           console.log(error);
       })
-    setIngredients(recipes);
-    // setReviewBoard(reviewData);
-  }, [recipes, reviewBoard]);
+    // setIngredients(recipes);
+  }, [reviewBoard]);
 
   const addName = (name) => {
     setName(name);

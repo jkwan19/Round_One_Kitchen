@@ -11,7 +11,7 @@ function ReviewsList(props) {
   const listReviews = reviewBoard.map((data, index) =>
     <Review key={index}
             name={data.name}
-            review={data.review} />
+            review={data.comment} />
   )
   return (
     <ReviewList>
