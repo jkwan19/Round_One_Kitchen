@@ -8,7 +8,6 @@ const createReview = (req, res) => {
             error: 'You must provide a review',
         })
     }
-    console.log(body, 'creating review')
     const review = new Review(body)
 
     if (!review) {

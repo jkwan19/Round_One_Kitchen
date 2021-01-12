@@ -24,7 +24,11 @@ function Review(props) {
       <UserNameText>{name}</UserNameText>
       <span>{review}</span>
       <Box component="fieldset" mb={3}      borderColor="transparent">
-        <Rating name="read-only" value={rating} readOnly />
+        <Rating
+          name="half-rating-read"
+          precision={0.5}
+          value={rating}
+          readOnly />
       </Box>
       <div>{date}</div>
     </ReviewBox>

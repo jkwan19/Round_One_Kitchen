@@ -9,7 +9,7 @@ const db = require('../database');
 const reviewRouter = require('./reviews-router');
 
 app.use(cors())
-// app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'))
