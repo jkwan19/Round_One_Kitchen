@@ -11,6 +11,7 @@ function ReviewsList(props) {
   const listReviews = reviewBoard.map((data, index) =>
     <Review key={index}
             name={data.name}
+            date={data.createdAt}
             rating={data.rating}
             review={data.comment} />
   )
