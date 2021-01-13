@@ -89,6 +89,7 @@ const FormWrapper = styled.div`
 function App() {
   const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
+  const [renderRecipe, setRenderRecipe] = useState(false);
 
   useEffect(() => {
     getReviews();
@@ -120,34 +121,52 @@ function App() {
       });
   };
 
+  const handleRecipeClick = () => {
+    setRenderRecipe(!renderRecipe)
+  }
+
+  const renderRecipes = () => {
+    if (renderRecipe) {
+      return (
+        <RecipeWrapper>
+          <TitleWrapper>
+            <RecipeTitle>{recipes.name}</RecipeTitle>
+            <RatingWrapper>
+              Reviews: {reviewBoard.length || 0}
+            </RatingWrapper>
+            <ShareButtons />
+          </TitleWrapper>
+          <YoutubePlayer />
+          <Blog
+            ingredients={ingredients}
+            />
+          <ReviewWrapper>
+            <ReviewText>Leave a review of the recipe!</ReviewText>
+            <FormWrapper>
+              <ReviewInput
+                addReview={addReview}
+                />
+            </FormWrapper>
+            <ReviewsList
+              reviewBoard={reviewBoard}
+              />
+          </ReviewWrapper>
+      </RecipeWrapper>
+      )
+    }
+    return (
+      <div>
+        <RecipeList handleRecipeClick={handleRecipeClick} />
+      </div>
+    )
+  }
+
+
+
   return (
     <div>
       <NavigationBar />
-      <RecipeList />
-      <RecipeWrapper>
-        <TitleWrapper>
-          <RecipeTitle>{recipes.name}</RecipeTitle>
-          <RatingWrapper>
-            Reviews: {reviewBoard.length || 0}
-          </RatingWrapper>
-          <ShareButtons />
-        </TitleWrapper>
-        <YoutubePlayer />
-        <Blog
-          ingredients={ingredients}
-          />
-        <ReviewWrapper>
-          <ReviewText>Leave a review of the recipe!</ReviewText>
-          <FormWrapper>
-            <ReviewInput
-              addReview={addReview}
-              />
-          </FormWrapper>
-          <ReviewsList
-            reviewBoard={reviewBoard}
-            />
-        </ReviewWrapper>
-      </RecipeWrapper>
+      {renderRecipes()}
     </div>
   );
 }

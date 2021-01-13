@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 500,
-    height: 450,
+    width: 600,
+    height: 600,
+  },
+  gridLink: {
+    cursor: 'pointer',
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
@@ -29,10 +32,15 @@ const tileData = [
     img: 'https://media.istockphoto.com/photos/dim-sum-hagao-picture-id877842880?k=6&m=877842880&s=612x612&w=0&h=QCioJ2wvppHOw-rn6KlHHoGUq-Wqh-LSuA5x7foQws0=',
     title: 'Har Gow (蝦餃)',
     author: 'Edmund',
+  },
+  {
+    img: 'https://preview.redd.it/hoz5zi9yiua61.jpg?width=960&crop=smart&auto=webp&s=cbf4401a6876c78d2361c967ba3dc7fe11e4898c',
+    title: 'Teriyaki Carne Tacos (w/ homemade Pico de Gallo and Sriracha Mayo!)',
+    author: 'Edmund',
   }
 ];
 
-function RecipeList() {
+function RecipeList(props) {
   const classes = useStyles();
 
   return (
@@ -42,7 +50,10 @@ function RecipeList() {
           <ListSubheader component="div">December</ListSubheader>
         </GridListTile>
         {tileData.map((tile) => (
-          <GridListTile key={tile.img}>
+          <GridListTile
+            className={classes.gridLink}
+            key={tile.img}
+            onClick={props.handleRecipeClick}>
             <img src={tile.img} alt={tile.title} />
             <GridListTileBar
               title={tile.title}
