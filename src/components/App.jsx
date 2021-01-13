@@ -88,7 +88,6 @@ const FormWrapper = styled.div`
 function App() {
   const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
-  const [ratingTotal, setRatingTotal] = useState(0);
 
   useEffect(() => {
     getReviews();
@@ -127,7 +126,7 @@ function App() {
         <TitleWrapper>
           <RecipeTitle>{recipes.name}</RecipeTitle>
           <RatingWrapper>
-            Ratings: {ratingTotal}
+            Reviews: {reviewBoard.length || 0}
           </RatingWrapper>
           <ShareButtons />
         </TitleWrapper>

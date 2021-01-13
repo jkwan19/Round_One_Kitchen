@@ -13,23 +13,30 @@ const UserNameText = styled.h4`
   text-align: left;
 `;
 
+const RatingBox = styled.div`
+  position: relative;
+  float: right;
+`;
+
 function Review(props) {
   const review = props.review;
   const name = props.name;
   const rating = props.rating;
-
   const date = moment(props.date).format('MMMM Do YYYY, h:mm:ss a')
+
   return (
     <ReviewBox>
       <UserNameText>{name}</UserNameText>
+      <RatingBox>
+        <Box component="fieldset" mb={3}      borderColor="transparent">
+          <Rating
+            name="half-rating-read"
+            precision={0.5}
+            value={rating}
+            readOnly />
+        </Box>
+      </RatingBox>
       <span>{review}</span>
-      <Box component="fieldset" mb={3}      borderColor="transparent">
-        <Rating
-          name="half-rating-read"
-          precision={0.5}
-          value={rating}
-          readOnly />
-      </Box>
       <div>{date}</div>
     </ReviewBox>
   )
