@@ -9,6 +9,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 import NavigationBar from './NavigationBar';
+import RecipeList from './RecipeList';
 import YoutubePlayer from './YoutubePlayer';
 import Blog from './Blog';
 import ReviewInput from './ReviewInput';
@@ -122,6 +123,7 @@ function App() {
   return (
     <div>
       <NavigationBar />
+      <RecipeList />
       <RecipeWrapper>
         <TitleWrapper>
           <RecipeTitle>{recipes.name}</RecipeTitle>
