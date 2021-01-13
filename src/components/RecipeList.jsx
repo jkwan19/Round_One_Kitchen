@@ -21,6 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
   gridLink: {
     cursor: 'pointer',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
   },
   icon: {
     color: 'rgba(255, 255, 255, 0.54)',
