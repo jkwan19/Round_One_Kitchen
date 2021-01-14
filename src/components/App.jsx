@@ -18,35 +18,41 @@ import ShareButtons from './ShareButtons';
 
 import reviewData from '../../public/data/reviews.json';
 
-const recipes = {
-  "name": "Har Gow (蝦餃)",
-  "filling": [
-    "1lb Peeled, Deveined Shrimp",
-    "1/4 tsp. Salt",
-    "1 pinch White Pepper",
-    "1/4 tsp. Chicken Boullion",
-    "1/4 tsp. Corn Starch",
-    "1 tsp. Sugar",
-    "1/4 cup Fine Julienned Bamboo Shoots",
-    "1/4 cup lard",
-    "1/2 tsp. Sesame Oil"
-  ],
-  "dough": [
-    "1 cup Wheat Flour",
-    "1/2 cup Corn Starch",
-    "2 cup Hot Water"
-  ],
-  "directions": [
-    "Wash shrimp",
-    "Mix dry ingredients",
-    "Mix lard and wet ingredients",
-    "Add rest of ingredients",
-    "Mix together",
-    "Make dough",
-    "Scoop filling into dough",
-    "Steam"
-  ]
-}
+const recipes =
+[
+  {
+    "name": "Har Gow (蝦餃)",
+    "ingredients": {
+      "filling": [
+        "1lb Peeled, Deveined Shrimp",
+        "1/4 tsp. Salt",
+        "1 pinch White Pepper",
+        "1/4 tsp. Chicken Boullion",
+        "1/4 tsp. Corn Starch",
+        "1 tsp. Sugar",
+        "1/4 cup Fine Julienned Bamboo Shoots",
+        "1/4 cup lard",
+        "1/2 tsp. Sesame Oil"
+      ],
+      "dough": [
+        "1 cup Wheat Flour",
+        "1/2 cup Corn Starch",
+        "2 cup Hot Water"
+      ],
+    },
+    "directions": [
+      "Wash shrimp",
+      "Mix dry ingredients",
+      "Mix lard and wet ingredients",
+      "Add rest of ingredients",
+      "Mix together",
+      "Make dough",
+      "Scoop filling into dough",
+      "Steam"
+    ]
+  }
+];
+
 const TitleWrapper = styled.div`
   width: 600px;
   display: inline-block;
@@ -61,6 +67,7 @@ const RatingWrapper = styled.div`
   width: 67%;
   display: inline-block;
 `;
+
 const RecipeWrapper = styled.div`
   position: absolute;
   margin: auto;
@@ -138,7 +145,7 @@ function App() {
           </TitleWrapper>
           <YoutubePlayer />
           <Blog
-            ingredients={ingredients}
+            recipes={ingredients}
             />
           <ReviewWrapper>
             <ReviewText>Leave a review of the recipe!</ReviewText>

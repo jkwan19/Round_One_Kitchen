@@ -3,10 +3,11 @@ import Recipe from './Recipe';
 import Directions from './Directions';
 
 function Blog(props) {
-  const { ingredients } = props;
+  const recipes = props.recipes[0];
+  const { ingredients } = recipes;
   const { filling } = ingredients;
   const { dough } = ingredients;
-  const { directions } = ingredients;
+  const { directions } = recipes;
 
   const renderFilling = filling ? filling.map((item, index) => <Recipe key={index} value={item} />) : <div>...Loading Filling</div>;
 
