@@ -8,13 +8,13 @@ import {
 import styled from 'styled-components';
 import axios from 'axios';
 
+import Blog from './Blog';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
-import YoutubePlayer from './YoutubePlayer';
-import Blog from './Blog';
 import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
+import YoutubePlayer from './YoutubePlayer';
 
 import reviewData from '../../public/data/reviews.json';
 

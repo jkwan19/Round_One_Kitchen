@@ -1,6 +1,8 @@
 import React from 'react';
-import Recipe from './Recipe';
+
 import Directions from './Directions';
+import LoadingProgress from './LoadingProgress';
+import Recipe from './Recipe';
 
 function Blog(props) {
   const recipes = props.recipes[0];
@@ -9,11 +11,11 @@ function Blog(props) {
   const { dough } = ingredients;
   const { directions } = recipes;
 
-  const renderFilling = filling ? filling.map((item, index) => <Recipe key={index} value={item} />) : <div>...Loading Filling</div>;
+  const renderFilling = filling ? filling.map((item, index) => <Recipe key={index} value={item} />) : <LoadingProgress />;
 
-  const renderDough = dough ? dough.map((item, index) => <Recipe key={index} value={item} />) : <div>...Loading Dough</div>;
+  const renderDough = dough ? dough.map((item, index) => <Recipe key={index} value={item} />) : <LoadingProgress />;
 
-  const renderDirections = directions ? directions.map((item, index) => <Directions key={index} value={item} />) : <div>....Loading Directions</div>;
+  const renderDirections = directions ? directions.map((item, index) => <Directions key={index} value={item} />) : <LoadingProgress />;
 
   return (
     <div>
