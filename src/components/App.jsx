@@ -82,13 +82,20 @@ const ReviewWrapper = styled.div`
   width: 600px;
 `;
 
+const ReviewButtonWrapper = styled.div`
+  display: inline-block;
+  margin: auto;
+  padding: auto;
+  width: auto;
+`;
+
 const ReviewText = styled.div`
   text: strong;
   float: left;
 `;
 
-const FormWrapper = styled.div`
-  display: inline-block;
+const ReviewButton = styled.button`
+  float: right;
 `;
 
 function App() {
@@ -144,13 +151,11 @@ function App() {
           <Blog
             recipes={ingredients}
             />
-          <ReviewWrapper>
+          <ReviewButtonWrapper>
             <ReviewText>Leave a review of the recipe!</ReviewText>
-            <FormWrapper>
-              <ReviewInput
-                addReview={addReview}
-                />
-            </FormWrapper>
+            <ReviewButton>Add Review</ReviewButton>
+          </ReviewButtonWrapper>
+          <ReviewWrapper>
             <ReviewsList
               reviewBoard={reviewBoard}
               />
@@ -158,6 +163,7 @@ function App() {
       </RecipeWrapper>
       )
     }
+
     return (
       <div>
         <RecipeList handleRecipeClick={handleRecipeClick} />
