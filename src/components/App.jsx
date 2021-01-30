@@ -16,8 +16,6 @@ import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import YoutubePlayer from './YoutubePlayer';
 
-import reviewData from '../../public/data/reviews.json';
-
 const recipes =
 [
   {
@@ -60,7 +58,7 @@ const TitleWrapper = styled.div`
 
 const RecipeTitle = styled.h1`
   margin-top: 15%;
-  text-color: blue;
+  text-color: black;
 `;
 
 const RatingWrapper = styled.div`
@@ -100,8 +98,7 @@ function App() {
 
   useEffect(() => {
     getReviews();
-    // setIngredients(recipes);
-  }, [reviewBoard]);
+  }, []);
 
   const addName = (name) => {
     setName(name);
@@ -114,16 +111,16 @@ function App() {
   const getReviews = () => {
     axios.get('/api/reviews')
       .then(response => {
+        console.log(response, 'reviews')
         setReviewBoard(response.data.data);
       })
       .catch(function (error){
-          console.log(error);
+        console.log('Error getting reviews: ', error);
       })
   }
   const addReview = (review) => {
     axios.post('/api/reviews', review)
       .then(res => {
-        console.log('Posted: ', res.data)
         getReviews();
       });
   };
@@ -137,7 +134,7 @@ function App() {
       return (
         <RecipeWrapper>
           <TitleWrapper>
-            <RecipeTitle>{recipes.name}</RecipeTitle>
+            <RecipeTitle>{recipes[0].name}</RecipeTitle>
             <RatingWrapper>
               Reviews: {reviewBoard.length || 0}
             </RatingWrapper>
