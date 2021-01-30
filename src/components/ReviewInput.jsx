@@ -30,7 +30,6 @@ function ReviewInput(props) {
       comment,
       rating
     }
-    console.log(review);
     props.addReview(review);
     setComment('');
     setName('');
