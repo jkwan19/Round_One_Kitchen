@@ -15,41 +15,7 @@ import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import YoutubePlayer from './YoutubePlayer';
-
-const recipes =
-[
-  {
-    "name": "Har Gow (蝦餃)",
-    "ingredients": {
-      "filling": [
-        "1lb Peeled, Deveined Shrimp",
-        "1/4 tsp. Salt",
-        "1 pinch White Pepper",
-        "1/4 tsp. Chicken Boullion",
-        "1/4 tsp. Corn Starch",
-        "1 tsp. Sugar",
-        "1/4 cup Fine Julienned Bamboo Shoots",
-        "1/4 cup lard",
-        "1/2 tsp. Sesame Oil"
-      ],
-      "dough": [
-        "1 cup Wheat Flour",
-        "1/2 cup Corn Starch",
-        "2 cup Hot Water"
-      ],
-    },
-    "directions": [
-      "Wash shrimp",
-      "Mix dry ingredients",
-      "Mix lard and wet ingredients",
-      "Add rest of ingredients",
-      "Mix together",
-      "Make dough",
-      "Scoop filling into dough",
-      "Steam"
-    ]
-  }
-];
+import recipes from '../../public/data/ingredients.json';
 
 const TitleWrapper = styled.div`
   width: 600px;

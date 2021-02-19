@@ -1,16 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Direction = styled.li`
+const Item = styled.li`
   border: 1px;
   margin: auto;
   padding: 20px;
 `;
 
-function Directions(props) {
+function BlogItem(props) {
   return (
-    <Direction>{props.value}</Direction>
-  );
+    <Item>{props.value}</Item>
+  )
 }
 
-export default Directions;
+export default BlogItem;

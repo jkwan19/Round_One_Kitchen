@@ -1,33 +1,35 @@
 import React from 'react';
 
-import Directions from './Directions';
 import LoadingProgress from './LoadingProgress';
-import Recipe from './Recipe';
+import BlogItem from './BlogItem';
 
 function Blog(props) {
   const recipes = props.recipes[0];
   const { ingredients } = recipes;
-  const { filling } = ingredients;
-  const { dough } = ingredients;
   const { directions } = recipes;
 
-  const renderFilling = filling ? filling.map((item, index) => <Recipe key={index} value={item} />) : <LoadingProgress />;
+  const renderDirections = directions ? directions.map((item, index) => <BlogItem key={index} value={item} />) : <LoadingProgress />;
 
-  const renderDough = dough ? dough.map((item, index) => <Recipe key={index} value={item} />) : <LoadingProgress />;
+  const renderIngredients = ingredients.map((ingredient) => {
+    let category = Object.keys(ingredient)[0];
+    return (
+      <div>
+        <h3>{category}</h3>
+        <ul>
+          {ingredient ? ingredient[category].map((item) => {
+            return (<BlogItem value={item}/>)
+            }
+          ) : <LoadingProgress />}
+        </ul>
+      </div>
+    )
 
-  const renderDirections = directions ? directions.map((item, index) => <Directions key={index} value={item} />) : <LoadingProgress />;
+  })
 
   return (
     <div>
       <h2>Ingredients</h2>
-      <h3>Filling</h3>
-      <ul>
-        {renderFilling}
-      </ul>
-      <h3>Dough</h3>
-      <ul>
-        {renderDough}
-      </ul>
+      {renderIngredients}
       <h2>Directions</h2>
       <ol>
         {renderDirections}
