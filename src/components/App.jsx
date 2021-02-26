@@ -8,6 +8,8 @@ import {
 import styled from 'styled-components';
 import axios from 'axios';
 
+import HomePage from './HomePage';
+import AboutPage from './AboutPage';
 import Blog from './Blog';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
@@ -68,9 +70,10 @@ function App() {
   const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
   const [renderRecipe, setRenderRecipe] = useState(false);
-
+  const [page, setPage] = useState('Home');
++
   useEffect(() => {
-    getReviews();
+    // getReviews();
   }, []);
 
   const addName = (name) => {
@@ -81,26 +84,33 @@ function App() {
     setRating(value);
   }
 
-  const getReviews = () => {
-    axios.get('/api/reviews')
-      .then(response => {
-        console.log(response, 'reviews')
-        setReviewBoard(response.data.data);
-      })
-      .catch(function (error){
-        console.log('Error getting reviews: ', error);
-      })
-  }
-  const addReview = (review) => {
-    axios.post('/api/reviews', review)
-      .then(res => {
-        getReviews();
-      });
-  };
+  /* Connect to back end */
+
+  // const getReviews = () => {
+  //   axios.get('/api/reviews')
+  //     .then(response => {
+  //       console.log(response, 'reviews')
+  //       setReviewBoard(response.data.data);
+  //     })
+  //     .catch(function (error){
+  //       console.log('Error getting reviews: ', error);
+  //     })
+  // }
+  // const addReview = (review) => {
+  //   axios.post('/api/reviews', review)
+  //     .then(res => {
+  //       getReviews();
+  //     });
+  // };
 
   const handleRecipeClick = () => {
     setRenderRecipe(!renderRecipe)
-  }
+  };
+
+  const handleTabPage = (tab) => {
+    console.log(tab, 'clicking here')
+    setPage(tab);
+  };
 
   const renderRecipes = () => {
     if (renderRecipe) {
@@ -128,20 +138,26 @@ function App() {
           </ReviewWrapper>
       </RecipeWrapper>
       )
-    }
-
-    return (
-      <div>
+    } else if (page === "Blog") {
+      return (
         <RecipeList handleRecipeClick={handleRecipeClick} />
-      </div>
-    )
+      )
+    } else if (page === "About") {
+      return (
+        <AboutPage />
+      )
+    } else {
+      return (
+        <HomePage />
+      )
+    }
   }
 
 
 
   return (
     <div>
-      <NavigationBar />
+      <NavigationBar handleTabPage={handleTabPage} />
       {renderRecipes()}
     </div>
   );
