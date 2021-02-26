@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as
   Router,
-  Route,
-  Link
+  Switch,
+  Route
 } from "react-router-dom";
 import styled from 'styled-components';
 import axios from 'axios';
 
-import HomePage from './HomePage';
-import AboutPage from './AboutPage';
+/* COMPONENTS */
+import Home from './HomePage';
+import About from './AboutPage';
 import Blog from './Blog';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
@@ -18,6 +19,10 @@ import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import YoutubePlayer from './YoutubePlayer';
 import recipes from '../../public/data/ingredients.json';
+
+/* COMPONENT STYLING */
+const AppWrapper = styled.div`
+`;
 
 const TitleWrapper = styled.div`
   width: 600px;
@@ -70,10 +75,9 @@ function App() {
   const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
   const [renderRecipe, setRenderRecipe] = useState(false);
-  const [page, setPage] = useState('Home');
-+
+
   useEffect(() => {
-    // getReviews();
+    getReviews();
   }, []);
 
   const addName = (name) => {
@@ -86,33 +90,30 @@ function App() {
 
   /* Connect to back end */
 
-  // const getReviews = () => {
-  //   axios.get('/api/reviews')
-  //     .then(response => {
-  //       console.log(response, 'reviews')
-  //       setReviewBoard(response.data.data);
-  //     })
-  //     .catch(function (error){
-  //       console.log('Error getting reviews: ', error);
-  //     })
-  // }
-  // const addReview = (review) => {
-  //   axios.post('/api/reviews', review)
-  //     .then(res => {
-  //       getReviews();
-  //     });
-  // };
+  const getReviews = () => {
+    axios.get('/api/reviews')
+      .then(response => {
+        console.log(response, 'reviews')
+        setReviewBoard(response.data.data);
+      })
+      .catch(function (error){
+        console.log('Error getting reviews: ', error);
+      })
+  }
+  const addReview = (review) => {
+    axios.post('/api/reviews', review)
+      .then(res => {
+        getReviews();
+      });
+  };
 
   const handleRecipeClick = () => {
     setRenderRecipe(!renderRecipe)
   };
 
-  const handleTabPage = (tab) => {
-    console.log(tab, 'clicking here')
-    setPage(tab);
-  };
+  /* RENDER DISPLAY */
 
-  const renderRecipes = () => {
+  const renderDisplay = () => {
     if (renderRecipe) {
       return (
         <RecipeWrapper>
@@ -138,28 +139,23 @@ function App() {
           </ReviewWrapper>
       </RecipeWrapper>
       )
-    } else if (page === "Blog") {
-      return (
-        <RecipeList handleRecipeClick={handleRecipeClick} />
-      )
-    } else if (page === "About") {
-      return (
-        <AboutPage />
-      )
-    } else {
-      return (
-        <HomePage />
-      )
     }
   }
 
 
 
   return (
-    <div>
-      <NavigationBar handleTabPage={handleTabPage} />
-      {renderRecipes()}
-    </div>
+    <AppWrapper>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="blog" component={Blog} />
+        </Switch>
+        <NavigationBar />
+      </Router>
+      {renderDisplay()}
+    </AppWrapper>
   );
 }
 export default App;

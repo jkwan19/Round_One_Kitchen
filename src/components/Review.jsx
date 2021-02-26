@@ -28,7 +28,7 @@ function Review(props) {
     <ReviewBox>
       <UserNameText>{name}</UserNameText>
       <RatingBox>
-        <Box component="fieldset" mb={3}      borderColor="transparent">
+        <Box component="fieldset" mb={3} borderColor="transparent">
           <Rating
             name="half-rating-read"
             precision={0.5}

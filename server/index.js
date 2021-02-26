@@ -17,5 +17,4 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 app.use('/api', reviewRouter);
 app.use('/', express.static(path.join(__dirname, '../dist')))
 
-
 app.listen(apiPort, () => console.log(`Server running on port ${apiPort}`))

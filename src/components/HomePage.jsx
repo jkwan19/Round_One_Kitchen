@@ -1,4 +1,5 @@
 import React from 'react';
+import faker from 'faker';
 import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({

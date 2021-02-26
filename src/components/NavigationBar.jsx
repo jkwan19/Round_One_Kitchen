@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
@@ -33,12 +34,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function NavigationBar(props) {
+function NavigationBar() {
   const classes = useStyles();
-
-  const changeTabs = (e) => {
-    props.handleTabPage(e.target.value);
-  }
 
   return (
     <div className={classes.root}>
@@ -50,9 +47,9 @@ function NavigationBar(props) {
             <img className={classes.logo} src={logo} alt="Round One Kitchen"/>
           </Typography>
           <div className={classes.tabHeader}>
-            <Button onClick={changeTabs} value="Home">Home</Button>
-            <Button onClick={changeTabs} value="Blog">Blog</Button>
-            <Button onClick={changeTabs} value="About">About Us</Button>
+            <Button component={Link} to="/">Home</Button>
+            <Button component={Link} to="/blog">Blog</Button>
+            <Button component={Link} to="/about">About Us</Button>
           </div>
         </Toolbar>
       </AppBar>
