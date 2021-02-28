@@ -74,7 +74,6 @@ const ReviewButton = styled.button`
 function App() {
   const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
-  const [renderRecipe, setRenderRecipe] = useState(false);
 
   useEffect(() => {
     getReviews();
@@ -107,42 +106,6 @@ function App() {
       });
   };
 
-  const handleRecipeClick = () => {
-    setRenderRecipe(!renderRecipe)
-  };
-
-  /* RENDER DISPLAY */
-
-  const renderDisplay = () => {
-    if (renderRecipe) {
-      return (
-        <RecipeWrapper>
-          <TitleWrapper>
-            <RecipeTitle>{recipes[0].name}</RecipeTitle>
-            <RatingWrapper>
-              Reviews: {reviewBoard.length || 0}
-            </RatingWrapper>
-            <ShareButtons />
-          </TitleWrapper>
-          <YoutubePlayer />
-          <Blog
-            recipes={ingredients}
-            />
-          <ReviewButtonWrapper>
-            <ReviewText>Leave a review of the recipe!</ReviewText>
-            <ReviewButton>Add Review</ReviewButton>
-          </ReviewButtonWrapper>
-          <ReviewWrapper>
-            <ReviewsList
-              reviewBoard={reviewBoard}
-              />
-          </ReviewWrapper>
-      </RecipeWrapper>
-      )
-    }
-  }
-
-
 
   return (
     <AppWrapper>
@@ -150,11 +113,13 @@ function App() {
         <NavigationBar />
         <Switch>
           <Route exact path="/" component={Home} />
+          <Route path="/recipes" component={RecipeList} params={{
+            ingredients: ingredients,
+            reviews: reviewBoard
+          }} />
           <Route path="/about" component={About} />
-          <Route path="/blog" component={Blog} />
         </Switch>
       </Router>
-      {renderDisplay()}
     </AppWrapper>
   );
 }

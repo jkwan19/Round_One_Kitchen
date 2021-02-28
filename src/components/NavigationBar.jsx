@@ -57,6 +57,7 @@ function NavigationBar() {
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
+              onClick={() => console.log('clicking account')}
             >
               <AccountCircle />
             </IconButton>
