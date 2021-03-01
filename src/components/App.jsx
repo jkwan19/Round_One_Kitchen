@@ -18,7 +18,7 @@ import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import ShareButtons from './ShareButtons';
 import YoutubePlayer from './YoutubePlayer';
-import recipes from '../../public/data/ingredients.json';
+
 
 /* COMPONENT STYLING */
 const AppWrapper = styled.div`
@@ -72,7 +72,6 @@ const ReviewButton = styled.button`
 `;
 
 function App() {
-  const [ingredients, setIngredients] = useState(recipes);
   const [reviewBoard, setReviewBoard] = useState([]);
 
   useEffect(() => {
@@ -112,12 +111,20 @@ function App() {
       <Router>
         <NavigationBar />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/recipes" component={RecipeList} params={{
-            ingredients: ingredients,
-            reviews: reviewBoard
-          }} />
-          <Route path="/about" component={About} />
+          <Route
+            exact path="/"
+            component={Home}
+            />
+          <Route
+            path="/recipes"
+            component={RecipeList}
+            params={{
+              reviews: reviewBoard
+            }}/>
+          <Route
+            path="/about"
+            component={About}
+            />
         </Switch>
       </Router>
     </AppWrapper>

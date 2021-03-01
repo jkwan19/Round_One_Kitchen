@@ -41,10 +41,7 @@ function Blog(props) {
     }
 
   }
-  const recipes = props.match.params
-  const { ingredients } = recipes;
-  const { directions } = recipes;
-  console.log(recipes, 'recipe')
+
   const renderDirections = directions ? directions.map((item, index) => <BlogItem key={index} value={item} />) : <LoadingProgress />;
 
   const renderIngredients = ingredients.map((ingredient) => {
@@ -63,11 +60,6 @@ function Blog(props) {
 
   })
 
-  // return (
-  //   <div>
-  //     {renderDisplay()}
-  //   </div>
-  // )
   return (
     <div>
       <h2>Ingredients</h2>

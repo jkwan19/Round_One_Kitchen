@@ -1,4 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {
+  Link,
+  Switch,
+  Route,
+  useRouteMatch
+} from "react-router-dom";
+import Blog from './Blog';
+import recipeData from '../../public/data/ingredients.json';
+
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
@@ -33,19 +42,28 @@ const useStyles = makeStyles((theme) => ({
 
 const tileData = [
   {
+    id: 1,
     img: 'https://media.istockphoto.com/photos/dim-sum-hagao-picture-id877842880?k=6&m=877842880&s=612x612&w=0&h=QCioJ2wvppHOw-rn6KlHHoGUq-Wqh-LSuA5x7foQws0=',
-    title: 'Har Gow (蝦餃)',
+    name: 'Har Gow (蝦餃)',
     author: 'Edmund',
   },
   {
+    id: 2,
     img: 'https://preview.redd.it/hoz5zi9yiua61.jpg?width=960&crop=smart&auto=webp&s=cbf4401a6876c78d2361c967ba3dc7fe11e4898c',
-    title: 'Teriyaki Carne Tacos (w/ homemade Pico de Gallo and Sriracha Mayo!)',
+    name: 'Teriyaki Carne Tacos (w/ homemade Pico de Gallo and Sriracha Mayo!)',
     author: 'Edmund',
   }
 ];
 
 function RecipeList(props) {
+  let match = useRouteMatch();
   const classes = useStyles();
+  const [recipes, setRecipes] = useState(recipeData);
+  const [recipeID, setRecipeID] = useState(null);
+
+  const { ingredients } = recipes;
+  const { directions } = recipes;
+
 
   return (
     <div className={classes.root}>
@@ -53,23 +71,28 @@ function RecipeList(props) {
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Recipes</ListSubheader>
         </GridListTile>
-        {tileData.map((tile) => (
-          <GridListTile
+          {tileData.map((tile) => (
+            <Link
+              to={`/${tile.id}`}
+              component={Blog[tile.id]}
+              >
+            <GridListTile
             className={classes.gridLink}
-            key={tile.img}
-            onClick={props.handleRecipeClick}>
-            <img src={tile.img} alt={tile.title} />
-            <GridListTileBar
-              title={tile.title}
-              subtitle={<span>by: {tile.author}</span>}
-              actionIcon={
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
-                  <InfoIcon />
-                </IconButton>
-              }
-            />
-          </GridListTile>
-        ))}
+            key={tile.name}
+            >
+                <img src={tile.img} alt={tile.name} />
+                <GridListTileBar
+                  title={tile.name}
+                  subtitle={<span>by: {tile.author}</span>}
+                  actionIcon={
+                    <IconButton aria-label={`info about ${tile.name}`} className={classes.icon}>
+                      <InfoIcon />
+                    </IconButton>
+                  }
+                  />
+              </GridListTile>
+            </Link>
+          ))}
       </GridList>
     </div>
   );
