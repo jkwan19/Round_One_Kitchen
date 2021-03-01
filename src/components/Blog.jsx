@@ -1,13 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import LoadingProgress from './LoadingProgress';
 import BlogItem from './BlogItem';
 
 function Blog(props) {
-  const recipes = props.recipes[0];
+
+  const [renderRecipe, setRenderRecipe] = useState(false);
+  const handleRecipeClick = () => {
+    setRenderRecipe(!renderRecipe)
+  };
+
+  /* RENDER DISPLAY */
+
+  const renderDisplay = () => {
+    if (renderRecipe) {
+      return (
+        <RecipeWrapper>
+          <TitleWrapper>
+            <RecipeTitle>{recipes[0].name}</RecipeTitle>
+            <RatingWrapper>
+              Reviews: {reviewBoard.length || 0}
+            </RatingWrapper>
+            <ShareButtons />
+          </TitleWrapper>
+          <YoutubePlayer />
+          <Blog
+            recipes={ingredients}
+            />
+          <ReviewButtonWrapper>
+            <ReviewText>Leave a review of the recipe!</ReviewText>
+            <ReviewButton>Add Review</ReviewButton>
+          </ReviewButtonWrapper>
+          <ReviewWrapper>
+            <ReviewsList
+              reviewBoard={reviewBoard}
+              />
+          </ReviewWrapper>
+      </RecipeWrapper>
+      )
+    }
+
+  }
+  const recipes = props.match.params
   const { ingredients } = recipes;
   const { directions } = recipes;
-
+  console.log(recipes, 'recipe')
   const renderDirections = directions ? directions.map((item, index) => <BlogItem key={index} value={item} />) : <LoadingProgress />;
 
   const renderIngredients = ingredients.map((ingredient) => {
@@ -26,6 +63,11 @@ function Blog(props) {
 
   })
 
+  // return (
+  //   <div>
+  //     {renderDisplay()}
+  //   </div>
+  // )
   return (
     <div>
       <h2>Ingredients</h2>

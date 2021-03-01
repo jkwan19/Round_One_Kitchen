@@ -51,13 +51,12 @@ function NavigationBar() {
           </Typography>
           <div className={classes.tabHeader}>
             <Button component={Link} to="/">Home</Button>
-            <Button component={Link} to="/recipes">Recipes</Button>
+            <Button component={Link} to="/recipes">Recipes  </Button>
             <Button component={Link} to="/about">About Us</Button>
             <IconButton
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"
-              onClick={() => console.log('clicking account')}
             >
               <AccountCircle />
             </IconButton>

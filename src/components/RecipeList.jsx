@@ -22,7 +22,8 @@ const useStyles = makeStyles((theme) => ({
   gridLink: {
     cursor: 'pointer',
     '&:hover': {
-      transform: 'scale(1.1)',
+      background: '#e1e1e1',
+      border: '1px solid red'
     },
   },
   icon: {
@@ -50,7 +51,7 @@ function RecipeList(props) {
     <div className={classes.root}>
       <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div">December</ListSubheader>
+          <ListSubheader component="div">Recipes</ListSubheader>
         </GridListTile>
         {tileData.map((tile) => (
           <GridListTile
