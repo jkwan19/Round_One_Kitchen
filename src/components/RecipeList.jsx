@@ -6,7 +6,7 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import Blog from './Blog';
-import recipeData from '../../public/data/ingredients.json';
+import recipes from '../../public/data/ingredients.json';
 
 import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
@@ -40,60 +40,55 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const tileData = [
-  {
-    id: 1,
-    img: 'https://media.istockphoto.com/photos/dim-sum-hagao-picture-id877842880?k=6&m=877842880&s=612x612&w=0&h=QCioJ2wvppHOw-rn6KlHHoGUq-Wqh-LSuA5x7foQws0=',
-    name: 'Har Gow (蝦餃)',
-    author: 'Edmund',
-  },
-  {
-    id: 2,
-    img: 'https://preview.redd.it/hoz5zi9yiua61.jpg?width=960&crop=smart&auto=webp&s=cbf4401a6876c78d2361c967ba3dc7fe11e4898c',
-    name: 'Teriyaki Carne Tacos (w/ homemade Pico de Gallo and Sriracha Mayo!)',
-    author: 'Edmund',
-  }
-];
 
 function RecipeList(props) {
   let match = useRouteMatch();
   const classes = useStyles();
-  const [recipes, setRecipes] = useState(recipeData);
-  const [recipeID, setRecipeID] = useState(null);
-
-  const { ingredients } = recipes;
-  const { directions } = recipes;
-
+  // const [recipes, setRecipes] = useState(recipeData);
 
   return (
     <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
+      {/* <GridList cellHeight={180} className={classes.gridList}>
         <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
           <ListSubheader component="div">Recipes</ListSubheader>
-        </GridListTile>
-          {tileData.map((tile) => (
-            <Link
-              to={`/${tile.id}`}
-              component={Blog[tile.id]}
-              >
-            <GridListTile
-            className={classes.gridLink}
-            key={tile.name}
-            >
-                <img src={tile.img} alt={tile.name} />
-                <GridListTileBar
-                  title={tile.name}
-                  subtitle={<span>by: {tile.author}</span>}
-                  actionIcon={
-                    <IconButton aria-label={`info about ${tile.name}`} className={classes.icon}>
-                      <InfoIcon />
-                    </IconButton>
-                  }
-                  />
-              </GridListTile>
-            </Link>
-          ))}
-      </GridList>
+        </GridListTile> */}
+        <ul>
+
+          {recipes.map((recipe) => (
+            <li>
+              <Link
+                to={`${match.url}/id?recipeID=${recipe.id}`}
+                component={props => (
+                  <Blog />)
+                }
+                >
+                {recipe.name}
+                </Link>
+            </li>
+            // <GridListTile
+            // className={classes.gridLink}
+            // key={recipe.name}
+            // >
+            // <img src={recipe.img} alt={recipe.name} />
+            // <Link
+            //     to={{path:`recipes/${recipe.id}`}}
+            //     component={props => (
+              //       <Blog {...props} data={recipe}/>)
+              //     }>
+              //   <GridListTileBar
+              //     title={recipe.name}
+              //     subtitle={<span>by: Edmund</span>}
+              //     actionIcon={
+                //       <IconButton aria-label={`info about ${recipe.name}`} className={classes.icon}>
+                //         <InfoIcon />
+                //       </IconButton>
+                //     }
+                //     />
+                //   </Link>
+                // </GridListTile>
+                ))}
+      </ul>
+      {/* </GridList> */}
     </div>
   );
 }

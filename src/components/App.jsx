@@ -117,10 +117,12 @@ function App() {
             />
           <Route
             path="/recipes"
-            component={RecipeList}
-            params={{
-              reviews: reviewBoard
-            }}/>
+            exact component={RecipeList}
+            />
+          <Route
+            path="/recipes/:id"
+            component
+            />
           <Route
             path="/about"
             component={About}
