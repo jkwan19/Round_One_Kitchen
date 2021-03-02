@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import {
   Link,
   Switch,
-  Route,
-  useRouteMatch
+  Route
 } from "react-router-dom";
-import Blog from './Blog';
+import Recipe from './Recipe';
 import recipes from '../../public/data/ingredients.json';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -42,7 +41,6 @@ const useStyles = makeStyles((theme) => ({
 
 
 function RecipeList(props) {
-  let match = useRouteMatch();
   const classes = useStyles();
   // const [recipes, setRecipes] = useState(recipeData);
 
@@ -55,12 +53,9 @@ function RecipeList(props) {
         <ul>
 
           {recipes.map((recipe) => (
-            <li>
+            <li key={recipe.id}>
               <Link
-                to={`${match.url}/id?recipeID=${recipe.id}`}
-                component={props => (
-                  <Blog />)
-                }
+                to={`recipes/${recipe.id}`}
                 >
                 {recipe.name}
                 </Link>

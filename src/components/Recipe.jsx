@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 import LoadingProgress from './LoadingProgress';
-import BlogItem from './BlogItem';
 import recipes from '../../public/data/ingredients.json';
 
 // function Blog(props) {
@@ -72,25 +71,25 @@ import recipes from '../../public/data/ingredients.json';
 //   );
 // }
 
-function Blog (props) {
-  const [recipeDetails, setRecipeDetails] = useState([]);
+const filterRecipe = (id) => {
+  for (let i = 0; i < recipes.length; i++) {
+    if (recipes[i].id === id) {
+      return recipes[i];
+    }
+  }
+}
+function Recipe (props) {
+  const [recipeDetails, setRecipeDetails] = useState({});
 
   useEffect(() => {
-    console.log(props, recipes, 'props')
-     const { recipeId } = props.location.query; // <== only natively available in react-router v3
-
-     setRecipeDetails(recipes.recipeId)
-  }, recipeDetails)
-
+     const recipeID = props.match.params.id; // <== only natively available in react-router v3
+     const recipe = filterRecipe(recipeID);
+     setRecipeDetails(recipe);
+  }, [recipeDetails])
   return (
     !recipeDetails
       ? <div>Loading...</div>
-      : <ul>
-         {recipeDetails.map(ingredient => (
-           <li key={ingredient}>ingredient</li>
-         )
-         )}
-        </ul>
+      : <div>{recipeDetails.name}</div>
   )
 }
-export default Blog;
+export default Recipe;

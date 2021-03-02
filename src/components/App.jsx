@@ -11,7 +11,7 @@ import axios from 'axios';
 /* COMPONENTS */
 import Home from './HomePage';
 import About from './AboutPage';
-import Blog from './Blog';
+import Recipe from './Recipe';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
 import ReviewInput from './ReviewInput';
@@ -121,7 +121,7 @@ function App() {
             />
           <Route
             path="/recipes/:id"
-            component
+            component={Recipe}
             />
           <Route
             path="/about"
