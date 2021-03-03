@@ -58,18 +58,6 @@ import recipes from '../../public/data/ingredients.json';
 
 //   })
 
-//   return (
-//     <div>
-//       <h2>Ingredients</h2>
-//       {renderIngredients}
-//       <h2>Directions</h2>
-//       <ol>
-//         {renderDirections}
-//       </ol>
-//     </div>
-
-//   );
-// }
 
 const filterRecipe = (id) => {
   for (let i = 0; i < recipes.length; i++) {
@@ -89,7 +77,14 @@ function Recipe (props) {
   return (
     !recipeDetails
       ? <div>Loading...</div>
-      : <div>{recipeDetails.name}</div>
+      : <div>
+          <h2>Ingredients</h2>
+          {renderIngredients}
+          <h2>Directions</h2>
+          <ol>
+            {renderDirections}
+          </ol>
+        </div>
   )
 }
 export default Recipe;

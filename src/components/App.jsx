@@ -12,6 +12,7 @@ import axios from 'axios';
 import Home from './HomePage';
 import About from './AboutPage';
 import Recipe from './Recipe';
+import Login from './Login';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
 import ReviewInput from './ReviewInput';
@@ -127,6 +128,10 @@ function App() {
             path="/about"
             component={About}
             />
+          <Route
+            path="/login"
+            component={Login}
+          />
         </Switch>
       </Router>
     </AppWrapper>
