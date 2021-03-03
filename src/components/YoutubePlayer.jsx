@@ -6,7 +6,7 @@ const YoutubeWrapper = styled.div`
   margin-top: 10%;
 `;
 
-function YoutubePlayer() {
+function YoutubePlayer(props) {
   const opts = {
     height: '390',
     width: '600',
@@ -14,15 +14,21 @@ function YoutubePlayer() {
     margin: 'auto',
     left: '50%',
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
-  const onReady = (event) => {
-    event.target.pauseVideo();
+
+  const videoID = props.videoID;
+
+  const onReady = (e) => {
+    e.target.pauseVideo();
   };
   return (
     <YoutubeWrapper>
-      <YouTube videoId="32iji_1Nduo" opts={opts} onReady={onReady} />
+      <YouTube
+        videoId={videoID}
+        opts={opts}
+        onReady={onReady} />
     </YoutubeWrapper>
   );
 }

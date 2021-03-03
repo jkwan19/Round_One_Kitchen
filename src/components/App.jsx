@@ -25,53 +25,6 @@ import YoutubePlayer from './YoutubePlayer';
 const AppWrapper = styled.div`
 `;
 
-const TitleWrapper = styled.div`
-  width: 600px;
-  display: inline-block;
-`;
-
-const RecipeTitle = styled.h1`
-  margin-top: 15%;
-  text-color: black;
-`;
-
-const RatingWrapper = styled.div`
-  width: 67%;
-  display: inline-block;
-`;
-
-const RecipeWrapper = styled.div`
-  position: absolute;
-  margin: auto;
-  left: 33%;
-  right: 33%;
-  padding: auto;
-  width: auto;
-`;
-
-const ReviewWrapper = styled.div`
-  background-color: #B7B7B7;
-  display: block;
-  justify-content: space-between;
-  width: 600px;
-`;
-
-const ReviewButtonWrapper = styled.div`
-  display: inline-block;
-  margin: auto;
-  padding: auto;
-  width: auto;
-`;
-
-const ReviewText = styled.div`
-  text: strong;
-  float: left;
-`;
-
-const ReviewButton = styled.button`
-  float: right;
-`;
-
 function App() {
   const [reviewBoard, setReviewBoard] = useState([]);
 

@@ -1,63 +1,59 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 
+import YoutubePlayer from './YoutubePlayer';
+import ShareButtons from './ShareButtons';
 import LoadingProgress from './LoadingProgress';
 import recipes from '../../public/data/ingredients.json';
 
-// function Blog(props) {
+/* Styling */
 
-//   const recipe = props.data;
-//   console.log(recipe.id, 'id')
-//   const { ingredients } = recipe;
-//   const { directions } = recipe;
+const TitleWrapper = styled.div`
+  width: 600px;
+  display: inline-block;
+`;
 
-//   /* RENDER DISPLAY */
+const RecipeTitle = styled.h1`
+  margin-top: 15%;
+  text-color: black;
+`;
 
-//   const renderDisplay = () => {
-//       return (
-//         <RecipeWrapper>
-//           <TitleWrapper>
-//             <RecipeTitle>{recipes.name}</RecipeTitle>
-//             <RatingWrapper>
-//               Reviews: {reviewBoard.length || 0}
-//             </RatingWrapper>
-//             <ShareButtons />
-//           </TitleWrapper>
-//           <YoutubePlayer />
-//           <Blog
-//             recipes={ingredients}
-//             />
-//           <ReviewButtonWrapper>
-//             <ReviewText>Leave a review of the recipe!</ReviewText>
-//             <ReviewButton>Add Review</ReviewButton>
-//           </ReviewButtonWrapper>
-//           <ReviewWrapper>
-//             <ReviewsList
-//               reviewBoard={reviewBoard}
-//               />
-//           </ReviewWrapper>
-//       </RecipeWrapper>
-//       )
+const RatingWrapper = styled.div`
+  width: 67%;
+  display: inline-block;
+`;
 
-//   }
+const RecipeWrapper = styled.div`
+  position: absolute;
+  margin: auto;
+  left: 33%;
+  right: 33%;
+  padding: auto;
+  width: auto;
+`;
 
-//   const renderDirections = directions ? directions.map((item, index) => <BlogItem key={index} value={item} />) : <LoadingProgress />;
+const ReviewWrapper = styled.div`
+  background-color: #B7B7B7;
+  display: block;
+  justify-content: space-between;
+  width: 600px;
+`;
 
-//   const renderIngredients = ingredients.map((ingredient) => {
-//     let category = Object.keys(ingredient)[0];
-//     return (
-//       <div>
-//         <h3>{category}</h3>
-//         <ul>
-//           {ingredient ? ingredient[category].map((item) => {
-//             return (<BlogItem value={item}/>)
-//             }
-//           ) : <LoadingProgress />}
-//         </ul>
-//       </div>
-//     )
+const ReviewButtonWrapper = styled.div`
+  display: inline-block;
+  margin: auto;
+  padding: auto;
+  width: auto;
+`;
 
-//   })
+const ReviewText = styled.div`
+  text: strong;
+  float: left;
+`;
 
+const ReviewButton = styled.button`
+  float: right;
+`;
 
 const filterRecipe = (id) => {
   for (let i = 0; i < recipes.length; i++) {
@@ -68,6 +64,50 @@ const filterRecipe = (id) => {
 }
 function Recipe (props) {
   const [recipeDetails, setRecipeDetails] = useState({});
+  //   /* RENDER DISPLAY */
+
+  // const renderDisplay = () => {
+  //   return (
+  //     <RecipeWrapper>
+  //       <TitleWrapper>
+  //         <RecipeTitle>{recipeDetails.name}</RecipeTitle>
+  //         <RatingWrapper>
+  //           {/* Reviews: {reviewBoard.length || 0} */}
+  //         </RatingWrapper>
+  //         <ShareButtons />
+  //       </TitleWrapper>
+  //       <YoutubePlayer />
+  //       <ReviewButtonWrapper>
+  //         <ReviewText>Leave a review of the recipe!</ReviewText>
+  //         <ReviewButton>Add Review</ReviewButton>
+  //       </ReviewButtonWrapper>
+  //       <ReviewWrapper>
+  //         <ReviewsList
+  //           // reviewBoard={reviewBoard}
+  //           />
+  //       </ReviewWrapper>
+  //   </RecipeWrapper>
+  //   )
+
+  // }
+
+// const renderDirections = directions ? directions.map((item, index) => <BlogItem key={index} value={item} />) : <LoadingProgress />;
+
+// const renderIngredients = ingredients.map((ingredient) => {
+//   let category = Object.keys(ingredient)[0];
+//   return (
+//     <div>
+//       <h3>{category}</h3>
+//       <ul>
+//         {ingredient ? ingredient[category].map((item) => {
+//           return (<BlogItem value={item}/>)
+//           }
+//         ) : <LoadingProgress />}
+//       </ul>
+//     </div>
+//   )
+
+// })
 
   useEffect(() => {
      const recipeID = props.match.params.id; // <== only natively available in react-router v3
@@ -77,14 +117,36 @@ function Recipe (props) {
   return (
     !recipeDetails
       ? <div>Loading...</div>
-      : <div>
-          <h2>Ingredients</h2>
-          {renderIngredients}
-          <h2>Directions</h2>
-          <ol>
-            {renderDirections}
-          </ol>
-        </div>
+      : <RecipeWrapper>
+            <TitleWrapper>
+              <RecipeTitle>{recipeDetails.name}</RecipeTitle>
+              <RatingWrapper>
+                {/* Reviews: {reviewBoard.length || 0} */}
+              </RatingWrapper>
+              <ShareButtons />
+            </TitleWrapper>
+            <YoutubePlayer videoID={recipeDetails.videoID}/>
+            <ReviewButtonWrapper>
+           <ReviewText>Leave a review of the recipe!</ReviewText>
+            <ReviewButton>Add Review</ReviewButton>
+          </ReviewButtonWrapper>
+          <ReviewWrapper>
+           {/* <ReviewsList
+            reviewBoard={reviewBoard}
+           />*/}
+          </ReviewWrapper>
+
+          <div>
+            <h2>Ingredients</h2>
+            <ol>
+              <li>Stuff</li>
+            </ol>
+            <h2>Directions</h2>
+            <ol>
+              <li>cook</li>
+            </ol>
+          </div>
+        </RecipeWrapper>
   )
 }
 export default Recipe;
