@@ -3,6 +3,8 @@ import styled from 'styled-components';
 
 import YoutubePlayer from './YoutubePlayer';
 import ShareButtons from './ShareButtons';
+import ReviewInput from './ReviewInput';
+import ReviewsList from './ReviewsList';
 import LoadingProgress from './LoadingProgress';
 import recipes from '../../public/data/ingredients.json';
 
@@ -64,6 +66,8 @@ const filterRecipe = (id) => {
 }
 function Recipe (props) {
   const [recipeDetails, setRecipeDetails] = useState({});
+  const [reviewBoard, setReviewBoard] = useState([]);
+
   //   /* RENDER DISPLAY */
 
   // const renderDisplay = () => {
@@ -112,8 +116,31 @@ function Recipe (props) {
   useEffect(() => {
      const recipeID = props.match.params.id; // <== only natively available in react-router v3
      const recipe = filterRecipe(recipeID);
+
+     getReviews();
      setRecipeDetails(recipe);
   }, [recipeDetails])
+
+
+  /* REVIEW CRUD */
+
+  const getReviews = () => {
+    axios.get('/api/reviews')
+      .then(response => {
+        console.log(response, 'reviews')
+        setReviewBoard(response.data.data);
+      })
+      .catch(function (error){
+        console.log('Error getting reviews: ', error);
+      })
+  }
+  const addReview = (review) => {
+    axios.post('/api/reviews', review)
+      .then(res => {
+        getReviews();
+      });
+  };
+
   return (
     !recipeDetails
       ? <div>Loading...</div>

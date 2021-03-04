@@ -17,8 +17,7 @@ import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
 import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
-import ShareButtons from './ShareButtons';
-import YoutubePlayer from './YoutubePlayer';
+
 
 
 /* COMPONENT STYLING */
