@@ -9,15 +9,15 @@ function Ingredients (props) {
     return (
       <>
       <h3>{data.type}</h3>
-      <Item />
+      <Item items={data.items}/>
       </>
     )
   }) || <LoadingProgress />
 
   return (
-    <ol>
+    <ul>
       {listIngredientTitle}
-    </ol>
+    </ul>
   )
 }
 
