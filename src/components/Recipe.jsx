@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
+/* COMPONENTS */
 import YoutubePlayer from './YoutubePlayer';
 import ShareButtons from './ShareButtons';
 import ReviewInput from './ReviewInput';
 import ReviewsList from './ReviewsList';
 import LoadingProgress from './LoadingProgress';
+import Ingredients from './Ingredients';
+import Directions from './Directions';
 import recipes from '../../public/data/ingredients.json';
 
-/* Styling */
+
+/* COMPONENT STYLING */
 
 const TitleWrapper = styled.div`
   width: 600px;
@@ -67,7 +72,6 @@ const filterRecipe = (id) => {
 function Recipe (props) {
   const [recipeDetails, setRecipeDetails] = useState({});
   const [reviewBoard, setReviewBoard] = useState([]);
-
   //   /* RENDER DISPLAY */
 
   // const renderDisplay = () => {
@@ -112,14 +116,12 @@ function Recipe (props) {
 //   )
 
 // })
-
   useEffect(() => {
-     const recipeID = props.match.params.id; // <== only natively available in react-router v3
-     const recipe = filterRecipe(recipeID);
-
-     getReviews();
-     setRecipeDetails(recipe);
-  }, [recipeDetails])
+    const recipeID = props.match.params.id;
+    const recipe = filterRecipe(recipeID);
+    setRecipeDetails(recipe);
+    getReviews();
+  }, recipeDetails)
 
 
   /* REVIEW CRUD */
@@ -127,7 +129,6 @@ function Recipe (props) {
   const getReviews = () => {
     axios.get('/api/reviews')
       .then(response => {
-        console.log(response, 'reviews')
         setReviewBoard(response.data.data);
       })
       .catch(function (error){
@@ -140,7 +141,7 @@ function Recipe (props) {
         getReviews();
       });
   };
-
+  console.log(recipeDetails, 'recipe');
   return (
     !recipeDetails
       ? <div>Loading...</div>
@@ -153,26 +154,23 @@ function Recipe (props) {
               <ShareButtons />
             </TitleWrapper>
             <YoutubePlayer videoID={recipeDetails.videoID}/>
+            <div>
+              <h2>Ingredients</h2>
+                <Ingredients ingredients={recipeDetails.ingredients}/>
+              <h2>Directions</h2>
+              <ol>
+                <li>cook</li>
+              </ol>
+            </div>
             <ReviewButtonWrapper>
-           <ReviewText>Leave a review of the recipe!</ReviewText>
-            <ReviewButton>Add Review</ReviewButton>
-          </ReviewButtonWrapper>
-          <ReviewWrapper>
-           {/* <ReviewsList
-            reviewBoard={reviewBoard}
-           />*/}
-          </ReviewWrapper>
-
-          <div>
-            <h2>Ingredients</h2>
-            <ol>
-              <li>Stuff</li>
-            </ol>
-            <h2>Directions</h2>
-            <ol>
-              <li>cook</li>
-            </ol>
-          </div>
+              <ReviewText>Leave a review of the recipe!</ReviewText>
+              <ReviewButton>Add Review</ReviewButton>
+            </ReviewButtonWrapper>
+            <ReviewWrapper>
+            {/* <ReviewsList
+              reviewBoard={reviewBoard}
+            />*/}
+            </ReviewWrapper>
         </RecipeWrapper>
   )
 }

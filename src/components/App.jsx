@@ -6,7 +6,6 @@ import {
   Route
 } from "react-router-dom";
 import styled from 'styled-components';
-import axios from 'axios';
 
 /* COMPONENTS */
 import Home from './HomePage';
@@ -15,48 +14,24 @@ import Recipe from './Recipe';
 import Login from './Login';
 import NavigationBar from './NavigationBar';
 import RecipeList from './RecipeList';
-import ReviewInput from './ReviewInput';
-import ReviewsList from './ReviewsList';
-
-
 
 /* COMPONENT STYLING */
 const AppWrapper = styled.div`
 `;
 
 function App() {
-  const [reviewBoard, setReviewBoard] = useState([]);
 
-  useEffect(() => {
-    getReviews();
-  }, []);
+  // useEffect(() => {
+  //   getReviews();
+  // }, []);
 
-  const addName = (name) => {
-    setName(name);
-  }
+  // const addName = (name) => {
+  //   setName(name);
+  // }
 
-  const addRating = (value) => {
-    setRating(value);
-  }
-
-  /* Connect to back end */
-
-  const getReviews = () => {
-    axios.get('/api/reviews')
-      .then(response => {
-        console.log(response, 'reviews')
-        setReviewBoard(response.data.data);
-      })
-      .catch(function (error){
-        console.log('Error getting reviews: ', error);
-      })
-  }
-  const addReview = (review) => {
-    axios.post('/api/reviews', review)
-      .then(res => {
-        getReviews();
-      });
-  };
+  // const addRating = (value) => {
+  //   setRating(value);
+  // }
 
 
   return (
