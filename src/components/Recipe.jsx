@@ -158,9 +158,7 @@ function Recipe (props) {
               <h2>Ingredients</h2>
                 <Ingredients ingredients={recipeDetails.ingredients}/>
               <h2>Directions</h2>
-              <ol>
-                <li>cook</li>
-              </ol>
+                <Directions directions={recipeDetails.directions}/>
             </div>
             <ReviewButtonWrapper>
               <ReviewText>Leave a review of the recipe!</ReviewText>
