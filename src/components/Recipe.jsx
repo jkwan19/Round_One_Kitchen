@@ -151,7 +151,7 @@ function Recipe (props) {
               <RatingWrapper>
                 {/* Reviews: {reviewBoard.length || 0} */}
               </RatingWrapper>
-              <ShareButtons />
+              <ShareButtons videoID={recipeDetails.videoID}/>
             </TitleWrapper>
             <YoutubePlayer videoID={recipeDetails.videoID}/>
             <div>

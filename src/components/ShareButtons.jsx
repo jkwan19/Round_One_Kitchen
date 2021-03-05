@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {
   FacebookShareButton,
@@ -16,8 +16,8 @@ const ShareWrapper = styled.div`
   float: right;
 `;
 
-function ShareButtons() {
-  const [shareUrl, setShareUrl] = useState('https://github.com/jkwan19')
+function ShareButtons(props) {
+  const shareUrl = `https://youtu.be/${props.videoID}`;
 
   return (
     <ShareWrapper>
