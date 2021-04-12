@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
+import {
+  AppBar,
+  Button,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography
+} from '@material-ui/core'
+
 import { fade, makeStyles } from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu';
 import AccountCircle from '@material-ui/icons/AccountCircle';
@@ -17,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   header: {
-    backgroundColor: '#e7c912',
+    backgroundColor: '#3CF5D2',
   },
   title: {
     flexGrow: 1,
@@ -41,15 +45,24 @@ function NavigationBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Grid container
+      className={classes.root}
+      spacing={2}
+      >
       <AppBar position="sticky" className={classes.header}>
         <Toolbar>
-          <Typography
-            className={classes.title}
-            variant="h6" noWrap>
-            <img className={classes.logo} src={logo} alt="Round One Kitchen"/>
-          </Typography>
-          <div className={classes.tabHeader}>
+          <Grid item xs={4}/>
+          <Grid item xs={4}>
+            <Typography
+              className={classes.title}
+              variant="h6" noWrap>
+              <img className={classes.logo} src={logo} alt="Round One Kitchen"/>
+            </Typography>
+          </Grid>
+          <Grid item container xs={4}
+            spacing={1}
+            justify="flex-end"
+            className={classes.tabHeader}>
             <Button component={Link} to="/">Home</Button>
             <Button component={Link} to="/recipes">Recipes  </Button>
             <Button component={Link} to="/about">About Us</Button>
@@ -62,10 +75,10 @@ function NavigationBar() {
             >
               <AccountCircle />
             </IconButton>
-          </div>
+          </Grid>
         </Toolbar>
       </AppBar>
-    </div>
+    </Grid>
   );
 }
 
