@@ -1,4 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, {
+  useState,
+  useEffect
+} from 'react';
 import { MuiThemeProvider } from "@material-ui/core";
 import { theme } from "./theme.js";
 
@@ -6,7 +9,7 @@ import {
   BrowserRouter as
   Router,
   Switch,
-  Route
+  Route,
 } from "react-router-dom";
 
 /* COMPONENTS */
@@ -31,7 +34,6 @@ function App() {
   // const addRating = (value) => {
   //   setRating(value);
   // }
-
 
   return (
     <MuiThemeProvider theme={theme}>

@@ -10,7 +10,7 @@ import ReviewsList from '../ReviewsList';
 import LoadingProgress from '../LoadingProgress';
 import Ingredients from '../Ingredients';
 import Directions from '../Directions';
-import recipes from '../../../public/data/ingredients.json';
+import recipes from '../../../public/data/recipes.json';
 
 
 /* COMPONENT STYLING */
@@ -33,8 +33,7 @@ const RatingWrapper = styled.div`
 const RecipeWrapper = styled.div`
   position: absolute;
   margin: auto;
-  left: 33%;
-  right: 33%;
+  left: 10%;
   padding: auto;
   width: auto;
 `;
@@ -68,7 +67,8 @@ const filterRecipe = (id) => {
       return recipes[i];
     }
   }
-}
+};
+
 function Recipe (props) {
   const [recipeDetails, setRecipeDetails] = useState({});
   const [reviewBoard, setReviewBoard] = useState([]);
@@ -121,7 +121,7 @@ function Recipe (props) {
     const recipe = filterRecipe(recipeID);
     setRecipeDetails(recipe);
     getReviews();
-  }, recipeDetails)
+  }, [recipeDetails])
 
 
   /* REVIEW CRUD */
@@ -141,7 +141,7 @@ function Recipe (props) {
         getReviews();
       });
   };
-  console.log(recipeDetails, 'recipe');
+
   return (
     !recipeDetails
       ? <LoadingProgress />
@@ -149,7 +149,7 @@ function Recipe (props) {
             <TitleWrapper>
               <RecipeTitle>{recipeDetails.name}</RecipeTitle>
               <RatingWrapper>
-                {/* Reviews: {reviewBoard.length || 0} */}
+                Reviews: {reviewBoard.length || 0}
               </RatingWrapper>
               <ShareButtons videoID={recipeDetails.videoID}/>
             </TitleWrapper>

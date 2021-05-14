@@ -1,0 +1,154 @@
+[
+  {
+    "id": "123",
+    "name": "Har Gow (蝦餃)",
+    "img": "https://media.istockphoto.com/photos/dim-sum-hagao-picture-id877842880?k=6&m=877842880&s=612x612&w=0&h=QCioJ2wvppHOw-rn6KlHHoGUq-Wqh-LSuA5x7foQws0=",
+    "videoID":"32iji_1Nduo",
+    "ingredients": [
+    {
+      "type": "Filling",
+      "items": [
+        "1lb Peeled, Deveined Shrimp",
+        "1/4 tsp. Salt",
+        "1 pinch White Pepper",
+        "1/4 tsp. Chicken Boullion",
+        "1/4 tsp. Corn Starch",
+        "1 tsp. Sugar",
+        "1/4 cup Fine Julienned Bamboo Shoots",
+        "1/4 cup lard",
+        "1/2 tsp. Sesame Oil"
+      ]
+    },
+    {
+      "type": "Dough",
+      "items": [
+        "1 cup Wheat Flour",
+        "1/2 cup Corn Starch",
+        "2 cup Hot Water"
+      ]
+    }],
+    "directions": [
+      "Wash shrimp",
+      "Mix dry ingredients",
+      "Mix lard and wet ingredients",
+      "Add rest of ingredients",
+      "Mix together",
+      "Make dough",
+      "Scoop filling into dough",
+      "Steam"
+    ],
+    "datePosted": "Dec 3, 2020"
+  },
+  {
+    "id": "231",
+    "name": "Teriyaki Tacos (Asian Fusion)",
+    "img": "https://preview.redd.it/hoz5zi9yiua61.jpg?width=960&crop=smart&auto=webp&s=cbf4401a6876c78d2361c967ba3dc7fe11e4898c",
+    "videoID":"mjRT7oh-9ac",
+    "ingredients": [
+      {
+      "type": "Teriyaki Sauce",
+      "items": [
+        "1/3 cup mirin",
+        "1 cup soy sauce",
+        "Chili flakes to taste (I used Korean red chili, it’s spicy but it also has a nice sweetness to it)",
+        "7 cloves of garlic (minced)",
+        "3-4 tbsp minced ginger",
+        "1 tbsp sesame oil",
+        "½ cup rice vinegar",
+        "½ cup granulated sugar (I substituted with Lakanto Monk Fruit Sweetener, feel free to use any other high temperature stable sugar substitutes if you would like)",
+        "2 tsp black pepper (or to taste)"
+      ]
+    },
+    {
+      "type": "Pico de Gallo",
+      "items": [
+        "4 cups diced ripe Roma tomatoes",
+        "½ large or 1 small red onion diced or minced",
+        "7 cloves of garlic (minced)",
+        "½ cup chopped cilantro",
+        "½ fresh lime (juiced)",
+        "Salt and black pepper to taste",
+        "Diced jalapeno or serrano peppers (optional)"
+      ]
+    },
+    {
+      "type": "Sriracha Mayo",
+      "items": [
+        "½ cup mayo (I like to use Japanese mayo, Kewpie)",
+        "1 tbsp sriracha (or to taste)"
+      ]
+    },
+    {
+      "type": "Tacos",
+      "items": [
+        "1 lb flap meat (or you choice of protein)",
+        "¾ cup teriyaki sauce",
+        "½ head of cabbage, finely shredded",
+        "10 6in tortillas",
+        "2 cups Pico de Gallo",
+        "1 cup spicy mayo",
+        "Fresh limes for juicing"
+      ]
+    }
+    ],
+    "directions": [
+      "Test tacos",
+      "Test tacos",
+      "Test tacos",
+      "Test tacos",
+      "Test tacos",
+      "Test tacos"
+    ],
+    "datePosted": "Jan 11, 2021"
+  },
+  {
+    "id": "3",
+    "name": "Wood-Fired Pizza",
+    "img": "https://preview.redd.it/p9e3guhkr4l61.jpg?width=640&crop=smart&auto=webp&s=d2c019b806496937bac298ca48eacaf4a768522b",
+    "videoID":"D8BL1yKvqjA",
+    "ingredients": [
+    {
+      "type": "Dough",
+      "items": [
+        "00 or Bread Flour 713 g",
+        "Water 464 mL",
+        "Salt 21.4 g",
+        "Fresh Yeast 1.4 g OR Dry Active Yeast 0.7 g"
+      ]
+    },
+    {
+      "type": "Sauce",
+      "items": [
+        " 28 oz Whole San Marzano Tomatoes (Canned)",
+        "1.5 tsp Basil",
+        "1.5 tsp Oregano",
+        "1.5 tsp Chili Flakes (I used gochugaru)",
+        "1.5 tsp Sugar (or sugar substitute, I used Lakanto Monk Fruit Sweetener)",
+        "Salt and Fresh Ground Black Pepper to taste"
+      ]
+    },
+    {
+      "type": "Toppings (Some suggestions)",
+      "items": [
+        "Whatever you want. Go nuts. You can put an egg on it. You can put clam chowder on it. Whatever.",
+        "Mozzarella (Fresh or Low Moisture)",
+        "Fresh Basil",
+        "Prosciutto",
+        "Mushrooms",
+        "Arugula",
+        "Truffles (if you’re balling like that)"
+      ]
+    }],
+    "directions": [
+      "Wash shrimp",
+      "Mix dry ingredients",
+      "Mix lard and wet ingredients",
+      "Add rest of ingredients",
+      "Mix together",
+      "Make dough",
+      "Scoop filling into dough",
+      "Steam"
+    ],
+    "datePosted": "Feb 15, 2021"
+  }
+]

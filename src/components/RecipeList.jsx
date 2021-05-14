@@ -5,7 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import Recipe from './pages/Recipe';
-import recipes from '../../public/data/ingredients.json';
+import recipes from '../../public/data/recipes.json';
 
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -28,8 +28,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
   },
   gridList: {
-    width: 600,
-    height: 600,
+
   },
   gridLink: {
     cursor: 'pointer',
@@ -50,44 +49,27 @@ function RecipeList(props) {
 
   return (
     <Grid className={classes.root}>
-      {/* <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+      <GridList cellHeight={300} cols={3} spacing={20} className={classes.gridList}>
+        <GridListTile key="Subheader" cols={3} style={{ height: 'auto' }}>
           <ListSubheader component="div">Recipes</ListSubheader>
-        </GridListTile> */}
-        <ul>
-
+        </GridListTile>
           {recipes.map((recipe) => (
-            <li key={recipe.id}>
-              <Link
+            <GridListTile
+            className={classes.gridLink}
+            key={recipe.name}
+            >
+            <img src={recipe.img} alt={recipe.name} />
+            <Link
                 to={`recipes/${recipe.id}`}
-                >
-                {recipe.name}
-                </Link>
-            </li>
-            // <GridListTile
-            // className={classes.gridLink}
-            // key={recipe.name}
-            // >
-            // <img src={recipe.img} alt={recipe.name} />
-            // <Link
-            //     to={{path:`recipes/${recipe.id}`}}
-            //     component={props => (
-              //       <Blog {...props} data={recipe}/>)
-              //     }>
-              //   <GridListTileBar
-              //     title={recipe.name}
-              //     subtitle={<span>by: Edmund</span>}
-              //     actionIcon={
-                //       <IconButton aria-label={`info about ${recipe.name}`} className={classes.icon}>
-                //         <InfoIcon />
-                //       </IconButton>
-                //     }
-                //     />
-                //   </Link>
-                // </GridListTile>
+               >
+                <GridListTileBar
+                  title={recipe.name}
+                  subtitle={<span>Posted: {recipe.datePosted}</span>}
+                    />
+                  </Link>
+                </GridListTile>
                 ))}
-      </ul>
-      {/* </GridList> */}
+      </GridList>
     </Grid>
   );
 }
