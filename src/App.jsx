@@ -10,10 +10,10 @@ import {
 } from "react-router-dom";
 
 /* COMPONENTS */
-import Home from './components/HomePage';
-import About from './components/AboutPage';
-import Recipe from './components/Recipe';
-import Login from './components/Login';
+import Home from './components/pages/Home';
+import About from './components/pages/About';
+import Recipe from './components/pages/Recipe';
+import Login from './components/pages/Login';
 import NavigationBar from './components/NavigationBar';
 import RecipeList from './components/RecipeList';
 

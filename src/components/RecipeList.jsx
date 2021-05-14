@@ -4,7 +4,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Recipe from './Recipe';
+import Recipe from './pages/Recipe';
 import recipes from '../../public/data/ingredients.json';
 
 import { makeStyles } from '@material-ui/core/styles';

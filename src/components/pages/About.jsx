@@ -1,7 +1,8 @@
 import React from 'react';
 import faker from 'faker';
 import {
-  Grid
+  Grid,
+  Typography
 } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 

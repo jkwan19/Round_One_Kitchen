@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import axios from 'axios';
 
 /* COMPONENTS */
-import YoutubePlayer from './YoutubePlayer';
-import ShareButtons from './ShareButtons';
-import ReviewInput from './ReviewInput';
-import ReviewsList from './ReviewsList';
-import LoadingProgress from './LoadingProgress';
-import Ingredients from './Ingredients';
-import Directions from './Directions';
-import recipes from '../../public/data/ingredients.json';
+import YoutubePlayer from '../YoutubePlayer';
+import ShareButtons from '../ShareButtons';
+import ReviewInput from '../ReviewInput';
+import ReviewsList from '../ReviewsList';
+import LoadingProgress from '../LoadingProgress';
+import Ingredients from '../Ingredients';
+import Directions from '../Directions';
+import recipes from '../../../public/data/ingredients.json';
 
 
 /* COMPONENT STYLING */
@@ -144,7 +144,7 @@ function Recipe (props) {
   console.log(recipeDetails, 'recipe');
   return (
     !recipeDetails
-      ? <div>Loading...</div>
+      ? <LoadingProgress />
       : <RecipeWrapper>
             <TitleWrapper>
               <RecipeTitle>{recipeDetails.name}</RecipeTitle>
